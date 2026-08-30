@@ -122,6 +122,7 @@ export default function ContactSection() {
   const [submitState, setSubmitState] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const {
     register,
@@ -135,12 +136,26 @@ export default function ContactSection() {
 
   const onSubmit = async (data: BookingFormData) => {
     setSubmitState("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1800));
-    console.log("Booking data:", data);
-    setSubmitState("success");
-    reset();
-    setTimeout(() => setSubmitState("idle"), 5000);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result.message ?? "Gửi thất bại");
+      }
+      setSubmitState("success");
+      reset();
+      setTimeout(() => setSubmitState("idle"), 6000);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Có lỗi xảy ra. Vui lòng thử lại.";
+      setErrorMsg(msg);
+      setSubmitState("error");
+      setTimeout(() => setSubmitState("idle"), 5000);
+    }
   };
 
   return (
@@ -208,17 +223,18 @@ export default function ContactSection() {
 
               <AnimatePresence mode="wait">
                 {submitState === "success" ? (
-                  /* Success state */
+                  /* ── Success state ── */
                   <motion.div
                     key="success"
                     className="py-12 flex flex-col items-center text-center"
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.85 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ type: "spring", duration: 0.5 }}
                   >
                     <motion.div
-                      className="w-20 h-20 rounded-full bg-teal-50 flex items-center justify-center mb-5"
+                      className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
+                      style={{ background: "linear-gradient(135deg, #f0fdfa, #ccfbf1)" }}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", delay: 0.1 }}
@@ -230,8 +246,44 @@ export default function ContactSection() {
                     </h4>
                     <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
                       Chúng tôi đã nhận yêu cầu của bạn và sẽ liên hệ lại
-                      trong vòng <strong>15 phút</strong>.
+                      trong vòng <strong className="text-teal-600">15 phút</strong>.
                     </p>
+                    <div className="mt-5 text-xs text-slate-400 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse inline-block" />
+                      Email xác nhận đã được gửi đến chủ cửa hàng
+                    </div>
+                  </motion.div>
+                ) : submitState === "error" ? (
+                  /* ── Error state ── */
+                  <motion.div
+                    key="error"
+                    className="py-12 flex flex-col items-center text-center"
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", duration: 0.5 }}
+                  >
+                    <motion.div
+                      className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
+                      style={{ background: "linear-gradient(135deg, #fff1f2, #ffe4e6)" }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", delay: 0.1 }}
+                    >
+                      <span className="text-4xl">😥</span>
+                    </motion.div>
+                    <h4 className="text-xl font-extrabold text-slate-900 mb-2">
+                      Gửi thất bại
+                    </h4>
+                    <p className="text-slate-500 text-sm max-w-xs leading-relaxed mb-4">
+                      {errorMsg || "Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline."}
+                    </p>
+                    <a
+                      href="tel:0969135304"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-600 text-white text-sm font-bold hover:bg-teal-700 transition-colors"
+                    >
+                      📞 Gọi ngay: 096 9135 304
+                    </a>
                   </motion.div>
                 ) : (
                   /* Form */

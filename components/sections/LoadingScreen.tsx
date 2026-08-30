@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "@/components/ui/Logo";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -257,32 +258,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
               {/* Brand name */}
               <div className="text-center">
-                <motion.h1
-                  className="text-3xl font-extrabold text-white tracking-tight leading-none"
-                  initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                  animate={{ opacity: 1, letterSpacing: "-0.01em" }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                >
-                  CleanPro
-                  <span
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #5eead4, #2dd4bf)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    {" "}VN
-                  </span>
-                </motion.h1>
-                <motion.p
-                  className="text-teal-300/70 text-[10px] font-semibold tracking-[0.25em] uppercase mt-1.5"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Premium Cleaning Service
-                </motion.p>
+                <Logo variant="full" theme="light" height={42} />
               </div>
             </motion.div>
 

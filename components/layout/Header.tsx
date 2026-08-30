@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, Phone, Sparkles } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import Logo from "@/components/ui/Logo";
 
 const NAV_LINKS = [
   { label: "Trang chủ", href: "#home" },
@@ -87,26 +88,14 @@ export default function Header() {
             {/* Logo */}
             <button
               onClick={() => scrollToSection("#home")}
-              className="flex items-center gap-2.5 group cursor-pointer"
+              className="cursor-pointer hover:opacity-85 transition-opacity duration-200"
               aria-label="CleanPro VN - Trang chủ"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center shadow-md group-hover:shadow-teal-400/40 transition-shadow duration-300">
-                <Sparkles className="w-5 h-5 text-white" />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span
-                  className={`text-lg font-extrabold tracking-tight transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"
-                    }`}
-                >
-                  CleanPro
-                </span>
-                <span
-                  className={`text-[10px] font-semibold tracking-widest uppercase transition-colors duration-300 ${isScrolled ? "text-teal-600" : "text-teal-300"
-                    }`}
-                >
-                  Vietnam
-                </span>
-              </div>
+              <Logo
+                variant="full"
+                theme={isScrolled ? "dark" : "light"}
+                height={36}
+              />
             </button>
 
             {/* Desktop Nav */}
@@ -222,12 +211,7 @@ export default function Header() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between p-5 border-b border-slate-100">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="font-extrabold text-slate-900">CleanPro VN</span>
-                </div>
+                <Logo variant="full" theme="dark" height={32} />
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 cursor-pointer"

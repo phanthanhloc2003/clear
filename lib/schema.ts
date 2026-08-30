@@ -14,10 +14,12 @@ export const bookingSchema = z.object({
       /^(\+84|84|0)(3[2-9]|5[6-9]|7[06-9]|8[0-9]|9[0-9])[0-9]{7}$/,
       "Số điện thoại không hợp lệ (VD: 0909123456)"
     ),
-  service: z.enum(
-    ["sofa", "mattress", "car_seat", "office_chair"],
-    { required_error: "Vui lòng chọn dịch vụ" }
-  ),
+  service: z
+    .string({ required_error: "Vui lòng chọn dịch vụ" })
+    .refine(
+      (val) => ["sofa", "mattress", "car_seat", "office_chair"].includes(val),
+      { message: "Vui lòng chọn dịch vụ" }
+    ),
   address: z
     .string()
     .min(10, "Vui lòng nhập địa chỉ đầy đủ")
