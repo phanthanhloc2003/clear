@@ -27,29 +27,29 @@ const YoutubeIcon = () => (
 /* ---------- Data ---------- */
 const FOOTER_LINKS = {
   services: [
-    { label: "Giặt Sofa",            href: "#services" },
-    { label: "Giặt Nệm",             href: "#services" },
-    { label: "Vệ Sinh Ghế Ô Tô",     href: "#services" },
-    { label: "Ghế Văn Phòng",        href: "#services" },
+    { label: "Giặt Sofa", href: "#services" },
+    { label: "Giặt Nệm", href: "#services" },
+    { label: "Vệ Sinh Ghế Ô Tô", href: "#services" },
+    { label: "Ghế Văn Phòng", href: "#services" },
   ],
   company: [
-    { label: "Về Chúng Tôi",         href: "#" },
-    { label: "Quy Trình",            href: "#process" },
-    { label: "Kết Quả Thực Tế",      href: "#results" },
-    { label: "Liên Hệ",              href: "#contact" },
+    { label: "Về Chúng Tôi", href: "#" },
+    { label: "Quy Trình", href: "#process" },
+    { label: "Kết Quả Thực Tế", href: "#results" },
+    { label: "Liên Hệ", href: "#contact" },
   ],
   legal: [
-    { label: "Chính Sách Bảo Mật",   href: "#" },
-    { label: "Điều Khoản Dịch Vụ",   href: "#" },
+    { label: "Chính Sách Bảo Mật", href: "#" },
+    { label: "Điều Khoản Dịch Vụ", href: "#" },
     { label: "Chính Sách Hoàn Tiền", href: "#" },
   ],
 };
 
 /* Sử dụng component SVG thay vì biến từ lucide */
 const SOCIAL_LINKS = [
-  { Icon: FacebookIcon,  href: "#", label: "Facebook",  color: "#1877f2" },
+  { Icon: FacebookIcon, href: "https://www.facebook.com/cong.hau.916575", label: "Facebook", color: "#1877f2" },
   { Icon: InstagramIcon, href: "#", label: "Instagram", color: "#e4405f" },
-  { Icon: YoutubeIcon,   href: "#", label: "Youtube",   color: "#ff0000" },
+  { Icon: YoutubeIcon, href: "#", label: "Youtube", color: "#ff0000" },
 ];
 
 /**
@@ -156,8 +156,8 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs text-slate-500 mb-0.5">Hotline</p>
-                  <a href="tel:0909123456" className="text-sm text-slate-300 hover:text-teal-400 font-semibold transition-colors">
-                    0909 123 456
+                  <a href="tel:096 9135 304" className="text-sm text-slate-300 hover:text-teal-400 font-semibold transition-colors">
+                    096 9135 304
                   </a>
                 </div>
               </li>
@@ -165,8 +165,8 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs text-slate-500 mb-0.5">Email</p>
-                  <a href="mailto:hello@cleanprovn.com" className="text-sm text-slate-300 hover:text-teal-400 transition-colors">
-                    hello@cleanprovn.com
+                  <a href="mailto:conghaupham147@gmail.com" className="text-sm text-slate-300 hover:text-teal-400 transition-colors">
+                    conghaupham147@gmail.com
                   </a>
                 </div>
               </li>
@@ -175,7 +175,7 @@ export default function Footer() {
                 <div>
                   <p className="text-xs text-slate-500 mb-0.5">Địa chỉ</p>
                   <p className="text-sm text-slate-300">
-                    123 Nguyễn Thị Minh Khai,<br />Quận 1, TP. HCM
+                    lô 03 Võ Chí Công<br />Ngũ Hành Sơn , Đà Nẵng
                   </p>
                 </div>
               </li>

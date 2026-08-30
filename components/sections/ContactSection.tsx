@@ -396,24 +396,24 @@ export default function ContactSection() {
               <ContactCard
                 icon={<Phone className="w-full h-full" />}
                 title="Hotline"
-                value="0909 123 456"
+                value="096 9135 304"
                 sub="Hỗ trợ 8:00 – 21:00 hàng ngày"
-                href="tel:0909123456"
+                href="tel:0969135304"
                 color="linear-gradient(135deg, #14b8a6, #0d9488)"
               />
               <ContactCard
                 icon={<MessageSquare className="w-full h-full" />}
                 title="Zalo"
-                value="0909 123 456"
+                value="096 9135 304"
                 sub="Nhắn tin để được tư vấn ngay"
-                href="https://zalo.me/0909123456"
+                href="https://zalo.me/0969135304"
                 color="linear-gradient(135deg, #0ea5e9, #0284c7)"
               />
               <ContactCard
                 icon={<MapPin className="w-full h-full" />}
                 title="Địa chỉ"
-                value="123 Nguyễn Thị Minh Khai"
-                sub="Phường 5, Quận 3, TP. HCM"
+                value="lô 03 Võ Chí Công"
+                sub="Ngũ Hành Sơn , TP Đà Nẵng"
                 color="linear-gradient(135deg, #f59e0b, #d97706)"
               />
               <ContactCard
@@ -432,13 +432,13 @@ export default function ContactSection() {
             >
               <iframe
                 title="CleanPro VN – Google Maps"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5!2d106.6868!3d10.7769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzM2LjkiTiAxMDbCsDQxJzEyLjUiRQ!5e0!3m2!1svi!2svn!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.332996653398!2d108.23241867479054!3d15.99617174139032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421b00446606a1%3A0x4a16da4c209217ee!2zVGjDqXAgTmjhuqV0IFTDrW4!5e0!3m2!1svi!2s!4v1788087573628!5m2!1svi!2s"
                 width="100%"
                 height="220"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
 

@@ -8,10 +8,10 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 const NAV_LINKS = [
   { label: "Trang chủ", href: "#home" },
-  { label: "Dịch vụ",   href: "#services" },
+  { label: "Dịch vụ", href: "#services" },
   { label: "Quy trình", href: "#process" },
-  { label: "Kết quả",   href: "#results" },
-  { label: "Liên hệ",   href: "#contact" },
+  { label: "Kết quả", href: "#results" },
+  { label: "Liên hệ", href: "#contact" },
 ];
 
 /**
@@ -95,16 +95,14 @@ export default function Header() {
               </div>
               <div className="flex flex-col leading-none">
                 <span
-                  className={`text-lg font-extrabold tracking-tight transition-colors duration-300 ${
-                    isScrolled ? "text-slate-900" : "text-white"
-                  }`}
+                  className={`text-lg font-extrabold tracking-tight transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"
+                    }`}
                 >
                   CleanPro
                 </span>
                 <span
-                  className={`text-[10px] font-semibold tracking-widest uppercase transition-colors duration-300 ${
-                    isScrolled ? "text-teal-600" : "text-teal-300"
-                  }`}
+                  className={`text-[10px] font-semibold tracking-widest uppercase transition-colors duration-300 ${isScrolled ? "text-teal-600" : "text-teal-300"
+                    }`}
                 >
                   Vietnam
                 </span>
@@ -117,15 +115,14 @@ export default function Header() {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${
-                    activeLink === link.href
-                      ? isScrolled
-                        ? "text-teal-600"
-                        : "text-teal-300"
-                      : isScrolled
+                  className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${activeLink === link.href
+                    ? isScrolled
+                      ? "text-teal-600"
+                      : "text-teal-300"
+                    : isScrolled
                       ? "text-slate-600 hover:text-teal-600"
                       : "text-white/80 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {link.label}
                   {activeLink === link.href && (
@@ -144,13 +141,12 @@ export default function Header() {
             <div className="flex items-center gap-3">
               {/* Phone (desktop) */}
               <a
-                href="tel:0909123456"
-                className={`hidden lg:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${
-                  isScrolled ? "text-slate-700 hover:text-teal-600" : "text-white/90 hover:text-white"
-                }`}
+                href="tel:096 9135 304"
+                className={`hidden lg:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-700 hover:text-teal-600" : "text-white/90 hover:text-white"
+                  }`}
               >
                 <Phone className="w-4 h-4" />
-                0909 123 456
+                096 9135 304
               </a>
 
               {/* CTA Button */}
@@ -165,11 +161,10 @@ export default function Header() {
               {/* Hamburger (mobile) */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={`md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer ${
-                  isScrolled
-                    ? "text-slate-700 hover:bg-slate-100"
-                    : "text-white hover:bg-white/10"
-                }`}
+                className={`md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer ${isScrolled
+                  ? "text-slate-700 hover:bg-slate-100"
+                  : "text-white hover:bg-white/10"
+                  }`}
                 aria-label="Toggle menu"
                 aria-expanded={mobileOpen}
               >
@@ -247,11 +242,10 @@ export default function Header() {
                   <motion.button
                     key={link.href}
                     onClick={() => scrollToSection(link.href)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${
-                      activeLink === link.href
-                        ? "bg-teal-50 text-teal-700"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                    }`}
+                    className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer ${activeLink === link.href
+                      ? "bg-teal-50 text-teal-700"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                      }`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06 }}
