@@ -10,7 +10,7 @@ const STATS = [
     value: 5000,
     suffix: "+",
     label: "Khách Hàng Hài Lòng",
-    description: "Phục vụ khắp TP. HCM và các tỉnh lân cận",
+    description: "Phục vụ khắp TP Đà Nẵng và các tỉnh lân cận",
     icon: <Users className="w-full h-full" />,
     duration: 2200,
   },
