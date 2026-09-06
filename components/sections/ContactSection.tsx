@@ -508,14 +508,14 @@ export default function ContactSection() {
               </p>
               <div className="flex gap-3 justify-center">
                 <a
-                  href="tel:0909123456"
+                  href="tel:+84969135304"
                   id="contact-phone-btn"
                   className="flex-1 py-2.5 rounded-xl bg-teal-600 text-white text-sm font-bold text-center hover:bg-teal-700 transition-colors"
                 >
                   📞 Gọi ngay
                 </a>
                 <a
-                  href="https://zalo.me/0909123456"
+                  href="https://zalo.me/+84969135304"
                   id="contact-zalo-btn"
                   className="flex-1 py-2.5 rounded-xl text-white text-sm font-bold text-center transition-colors"
                   style={{ background: "#0084ff" }}

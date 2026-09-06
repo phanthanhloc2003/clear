@@ -130,7 +130,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               {/* Phone (desktop) */}
               <a
-                href="tel:096 9135 304"
+                href="tel:+84969135304"
                 className={`hidden lg:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-700 hover:text-teal-600" : "text-white/90 hover:text-white"
                   }`}
               >
@@ -242,11 +242,11 @@ export default function Header() {
               {/* Drawer footer */}
               <div className="p-5 border-t border-slate-100 space-y-3">
                 <a
-                  href="tel:0909123456"
+                  href="tel:+84969135304"
                   className="flex items-center gap-2 text-sm font-semibold text-slate-700"
                 >
                   <Phone className="w-4 h-4 text-teal-600" />
-                  0909 123 456
+                  096 9135 304
                 </a>
                 <button
                   onClick={() => scrollToSection("#contact")}
