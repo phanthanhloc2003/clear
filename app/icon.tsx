@@ -5,9 +5,11 @@ export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 /**
- * Dynamic favicon generated via Next.js OG Image API.
- * Renders a premium teal gradient icon with sparkle shape.
- * Automatically served as /favicon.ico and tab icon.
+ * Favicon 32×32 – CleanPro VN
+ *
+ * Thiết kế: giọt nước trắng căn giữa hoàn hảo trên nền teal gradient,
+ * sparkle 4 cánh góc phải, gold shimmer trong giọt nước.
+ * Nhất quán với Logo component và Apple Touch Icon.
  */
 export default function Icon() {
   return new ImageResponse(
@@ -20,34 +22,69 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 8,
-          background: "linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #06b6d4 100%)",
-          boxShadow: "0 2px 8px rgba(20,184,166,0.4)",
+          background: "linear-gradient(135deg, #0d9488 0%, #14b8a6 55%, #06b6d4 100%)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Water droplet shape via SVG */}
+        {/* Inner top highlight overlay */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 14,
+            background: "rgba(255,255,255,0.10)",
+            borderRadius: "8px 8px 0 0",
+            display: "flex",
+          }}
+        />
+
+        {/* SVG: water drop (centered) + sparkle star + gold shimmer */}
         <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
+          width="26"
+          height="26"
+          viewBox="0 0 26 26"
           fill="none"
         >
-          {/* Drop shape */}
+          {/* === Gradient defs === */}
+          <defs>
+            <linearGradient id="dropG" x1="13" y1="2" x2="13" y2="24" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ccfbf1" stopOpacity="0.93" />
+            </linearGradient>
+            <linearGradient id="goldG" x1="8" y1="13" x2="11" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#fcd34d" />
+              <stop offset="100%" stopColor="#f59e0b" />
+            </linearGradient>
+          </defs>
+
+          {/* === Water drop – perfectly centered at (13, 13) === */}
           <path
-            d="M12 2 C12 2 5 10 5 15 C5 18.86 8.13 22 12 22 C15.87 22 19 18.86 19 15 C19 10 12 2 12 2Z"
-            fill="white"
-            opacity="0.95"
+            d="M13 2 C13 2 6 10.5 6 16 C6 19.87 9.13 23 13 23 C16.87 23 20 19.87 20 16 C20 10.5 13 2 13 2Z"
+            fill="url(#dropG)"
           />
-          {/* Gold inner shimmer */}
+
+          {/* Gold shimmer reflection inside drop */}
           <path
-            d="M12 6 C12 6 8 11.5 8 15 C8 17.2 9.8 19 12 19"
-            stroke="#f59e0b"
-            strokeWidth="1.5"
+            d="M10 14.5 C10 14.5 9 16.5 9 18 C9 19.5 10 21 11 21.5"
+            stroke="url(#goldG)"
+            strokeWidth="1.3"
             strokeLinecap="round"
-            opacity="0.8"
+            strokeOpacity="0.85"
           />
-          {/* Sparkle top */}
-          <circle cx="17" cy="5" r="1.5" fill="white" opacity="0.7" />
-          <circle cx="19" cy="8" r="1" fill="white" opacity="0.5" />
+
+          {/* Highlight dot top-left of drop */}
+          <circle cx="10.5" cy="10.5" r="1.4" fill="white" fillOpacity="0.5" />
+
+          {/* === Sparkle star (4-point) – top right === */}
+          {/* Vertical bar */}
+          <path d="M22 4 L22 9" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeOpacity="0.75" />
+          {/* Horizontal bar */}
+          <path d="M19.5 6.5 L24.5 6.5" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeOpacity="0.75" />
+          {/* Small satellite dot */}
+          <circle cx="21" cy="3" r="0.8" fill="white" fillOpacity="0.5" />
         </svg>
       </div>
     ),
