@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useRef, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -28,7 +28,7 @@ interface BeforeAfterSliderProps {
  */
 export function BeforeAfterSlider({ pair }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const isDraggingRef = useRef(false); // useRef thay vì useState – không cần re-render
   const position = useMotionValue(50); // percentage 0-100
   const [positionState, setPositionState] = useState(50);
 
@@ -49,11 +49,11 @@ export function BeforeAfterSlider({ pair }: BeforeAfterSliderProps) {
   const startDrag = useCallback(
     (e: React.PointerEvent) => {
       e.preventDefault();
-      setIsDragging(true);
+      isDraggingRef.current = true;
 
       const onMove = (ev: PointerEvent) => handleDrag(ev);
       const onUp = () => {
-        setIsDragging(false);
+        isDraggingRef.current = false;
         window.removeEventListener("pointermove", onMove);
         window.removeEventListener("pointerup", onUp);
       };

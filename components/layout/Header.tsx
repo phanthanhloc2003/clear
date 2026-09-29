@@ -1,18 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import Logo from "@/components/ui/Logo";
 
 const NAV_LINKS = [
-  { label: "Trang chủ", href: "#home" },
-  { label: "Dịch vụ", href: "#services" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Dịch vụ", href: "#services", isDropdown: true },
   { label: "Quy trình", href: "#process" },
   { label: "Kết quả", href: "#results" },
   { label: "Liên hệ", href: "#contact" },
+];
+
+const SERVICE_LINKS = [
+  { label: "🛋️ Giặt Sofa Đà Nẵng", href: "/giat-sofa-da-nang" },
+  { label: "🛏️ Giặt Nệm Đà Nẵng", href: "/giat-nem-da-nang" },
+  { label: "🚗 Vệ Sinh Ghế Ô Tô", href: "/ve-sinh-ghe-o-to-da-nang" },
+  { label: "💺 Vệ Sinh Ghế Văn Phòng", href: "/ve-sinh-ghe-van-phong-da-nang" },
 ];
 
 /**
@@ -23,7 +31,16 @@ const NAV_LINKS = [
 export default function Header() {
   const { isScrolled } = useScrollProgress();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("#home");
+  const [activeLink, setActiveLink] = useState("/");
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  // Trên các trang service (không phải trang chủ), header luôn hiển thị
+  // với nền frosted glass – không phụ thuộc vào scroll position.
+  // Điều này đảm bảo logo và nav luôn readable trên mọi hero background.
+  const useWhiteHeader = !isHomePage || isScrolled;
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -34,9 +51,21 @@ export default function Header() {
     return () => window.removeEventListener("resize", handler);
   }, []);
 
-  // Track active section
+  // Close dropdown when clicking outside
   useEffect(() => {
-    const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  // Track active section (only on home page)
+  useEffect(() => {
+    if (!isHomePage) return;
+    const sections = ["home", "services", "process", "results", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -47,16 +76,15 @@ export default function Header() {
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
-  }, []);
+  }, [isHomePage]);
 
   const scrollToSection = (href: string) => {
+    if (!href.startsWith("#")) return;
     const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (el) {
@@ -73,12 +101,12 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          background: isScrolled
-            ? "rgba(255,255,255,0.88)"
+          background: useWhiteHeader
+            ? "rgba(255,255,255,0.92)"
             : "transparent",
-          backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
-          WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
-          boxShadow: isScrolled
+          backdropFilter: useWhiteHeader ? "blur(20px) saturate(180%)" : "none",
+          WebkitBackdropFilter: useWhiteHeader ? "blur(20px) saturate(180%)" : "none",
+          boxShadow: useWhiteHeader
             ? "0 1px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(226,232,240,0.6)"
             : "none",
         }}
@@ -86,44 +114,92 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
-            <button
-              onClick={() => scrollToSection("#home")}
+            <Link
+              href="/"
               className="cursor-pointer hover:opacity-85 transition-opacity duration-200"
               aria-label="CleanPro VN - Trang chủ"
             >
               <Logo
                 variant="full"
-                theme={isScrolled ? "dark" : "light"}
+                theme={useWhiteHeader ? "dark" : "light"}
                 height={36}
               />
-            </button>
+            </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1" role="navigation" aria-label="Menu chính">
-              {NAV_LINKS.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${activeLink === link.href
-                    ? isScrolled
-                      ? "text-teal-600"
-                      : "text-teal-300"
-                    : isScrolled
-                      ? "text-slate-600 hover:text-teal-600"
-                      : "text-white/80 hover:text-white"
+              {NAV_LINKS.map((link) => {
+                if (link.isDropdown) {
+                  return (
+                    <div key={link.href} className="relative" ref={dropdownRef}>
+                      <button
+                        onClick={() => setServicesOpen(!servicesOpen)}
+                        className={`flex items-center gap-1 relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${useWhiteHeader ? "text-slate-600 hover:text-teal-600" : "text-white/80 hover:text-white"}`}
+                        aria-expanded={servicesOpen}
+                        aria-haspopup="true"
+                      >
+                        {link.label}
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      <AnimatePresence>
+                        {servicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                            transition={{ duration: 0.18 }}
+                            className="absolute top-full left-0 mt-2 w-60 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50"
+                          >
+                            {SERVICE_LINKS.map((svc) => (
+                              <Link
+                                key={svc.href}
+                                href={svc.href}
+                                onClick={() => setServicesOpen(false)}
+                                className="flex items-center px-4 py-3 text-sm text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors font-medium"
+                              >
+                                {svc.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+                // Regular link
+                const isActive = link.href === "/" ? pathname === "/" : activeLink === link.href;
+                return link.href.startsWith("#") ? (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer ${isActive
+                      ? useWhiteHeader ? "text-teal-600" : "text-teal-300"
+                      : useWhiteHeader ? "text-slate-600 hover:text-teal-600" : "text-white/80 hover:text-white"
                     }`}
-                >
-                  {link.label}
-                  {activeLink === link.href && (
-                    <motion.div
-                      layoutId="nav-indicator"
-                      className="absolute inset-0 rounded-full bg-teal-50"
-                      style={{ zIndex: -1 }}
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
-                    />
-                  )}
-                </button>
-              ))}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute inset-0 rounded-full bg-teal-50"
+                        style={{ zIndex: -1 }}
+                        transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
+                      />
+                    )}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${isActive
+                      ? useWhiteHeader ? "text-teal-600" : "text-teal-300"
+                      : useWhiteHeader ? "text-slate-600 hover:text-teal-600" : "text-white/80 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side */}
@@ -131,7 +207,7 @@ export default function Header() {
               {/* Phone (desktop) */}
               <a
                 href="tel:+84969135304"
-                className={`hidden lg:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-700 hover:text-teal-600" : "text-white/90 hover:text-white"
+                className={`hidden lg:flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${useWhiteHeader ? "text-slate-700 hover:text-teal-600" : "text-white/90 hover:text-white"
                   }`}
               >
                 <Phone className="w-4 h-4" />
@@ -150,7 +226,7 @@ export default function Header() {
               {/* Hamburger (mobile) */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={`md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer ${isScrolled
+                className={`md:hidden p-2 rounded-xl transition-colors duration-200 cursor-pointer ${useWhiteHeader
                   ? "text-slate-700 hover:bg-slate-100"
                   : "text-white hover:bg-white/10"
                   }`}

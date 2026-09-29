@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Phone, Mail, MapPin, Heart } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
@@ -28,16 +29,16 @@ const YoutubeIcon = () => (
 /* ---------- Data ---------- */
 const FOOTER_LINKS = {
   services: [
-    { label: "Giặt Sofa", href: "#services" },
-    { label: "Giặt Nệm", href: "#services" },
-    { label: "Vệ Sinh Ghế Ô Tô", href: "#services" },
-    { label: "Ghế Văn Phòng", href: "#services" },
+    { label: "Giặt Sofa Đà Nẵng", href: "/giat-sofa-da-nang" },
+    { label: "Giặt Nệm Đà Nẵng", href: "/giat-nem-da-nang" },
+    { label: "Vệ Sinh Ghế Ô Tô", href: "/ve-sinh-ghe-o-to-da-nang" },
+    { label: "Ghế Văn Phòng", href: "/ve-sinh-ghe-van-phong-da-nang" },
   ],
   company: [
-    { label: "Về Chúng Tôi", href: "#" },
-    { label: "Quy Trình", href: "#process" },
-    { label: "Kết Quả Thực Tế", href: "#results" },
-    { label: "Liên Hệ", href: "#contact" },
+    { label: "Về Chúng Tôi", href: "/#home" },
+    { label: "Quy Trình", href: "/#process" },
+    { label: "Kết Quả Thực Tế", href: "/#results" },
+    { label: "Liên Hệ", href: "/#contact" },
   ],
   legal: [
     { label: "Chính Sách Bảo Mật", href: "#" },
@@ -111,12 +112,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.services.map((link) => (
                 <li key={link.label}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 text-left cursor-pointer"
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 text-left"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

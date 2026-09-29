@@ -509,3 +509,66 @@ h1, h2, h3, h4, h5, h6 {
     rgba(0, 0, 0, 0.45) 100%
   );
 }
+
+/* ---------- Service Page Layout Fixes ---------- */
+/* Prevent sidebar from overflowing or breaking grid on small screens */
+@media (max-width: 1023px) {
+  /* On mobile/tablet, sidebar is a normal block below content – not sticky */
+  aside .lg\:sticky {
+    position: static !important;
+  }
+}
+
+/* Ensure price cells don't overflow on mobile */
+.price-cell-type {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Prevent horizontal scroll from framer-motion animations on mobile */
+main {
+  overflow-x: hidden;
+}
+
+/* Animated section wrapper should never overflow horizontally */
+[data-framer-component-type],
+.motion-div {
+  max-width: 100%;
+}
+
+/* Fix Framer Motion elements that might cause horizontal overflow */
+section {
+  overflow-x: hidden;
+}
+
+/* Ensure grid columns don't shrink below minimum on mobile */
+@media (max-width: 639px) {
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Prevent very long words breaking layout in reviews */
+.review-text {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Smooth FAQ details animation */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] > div {
+  animation: fade-up 0.25s ease-out forwards;
+}
+
+/* Ensure whitespace-nowrap price tags don't overflow on very small screens */
+@media (max-width: 360px) {
+  .whitespace-nowrap {
+    white-space: normal;
+  }
+}
+

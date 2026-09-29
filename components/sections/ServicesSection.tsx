@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ServiceCard from "@/components/ui/ServiceCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
@@ -7,6 +8,7 @@ const SERVICES = [
   {
     icon: "🛋️",
     title: "GIẶT SOFA",
+    href: "/giat-sofa-da-nang",
     description:
       "Làm sạch sâu từng lớp vải, loại bỏ bụi bẩn và mùi khó chịu. Phục hồi màu sắc và kết cấu vải sô pha như mới.",
     features: [
@@ -19,6 +21,7 @@ const SERVICES = [
   {
     icon: "🛏️",
     title: "GIẶT NỆM",
+    href: "/giat-nem-da-nang",
     description:
       "Loại bỏ bụi, mồ hôi và các tác nhân gây mùi. Tiêu diệt mạt giường, vi khuẩn để giấc ngủ ngon hơn.",
     features: [
@@ -31,6 +34,7 @@ const SERVICES = [
   {
     icon: "🚗",
     title: "VỆ SINH GHẾ Ô TÔ",
+    href: "/ve-sinh-ghe-o-to-da-nang",
     description:
       "Làm sạch ghế, khử mùi và phục hồi vẻ ngoài. Xử lý vết ố vàng, mùi khói và bụi bẩn trong nội thất xe.",
     features: [
@@ -43,6 +47,7 @@ const SERVICES = [
   {
     icon: "💺",
     title: "GHẾ VĂN PHÒNG",
+    href: "/ve-sinh-ghe-van-phong-da-nang",
     description:
       "Giữ không gian làm việc sạch sẽ và chuyên nghiệp. Tăng năng suất, loại bỏ vi khuẩn và bụi tích tụ.",
     features: [
@@ -102,15 +107,16 @@ export default function ServicesSection() {
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
           {SERVICES.map((service, i) => (
-            <ServiceCard
-              key={service.title}
-              index={i}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              features={service.features}
-              onBook={scrollToContact}
-            />
+            <Link key={service.title} href={service.href} className="block">
+              <ServiceCard
+                index={i}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                onBook={scrollToContact}
+              />
+            </Link>
           ))}
         </div>
 

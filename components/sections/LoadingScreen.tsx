@@ -105,6 +105,11 @@ const SPARKS = [
   { x: "60%", y: "25%", size: 4, delay: 0.9 },
 ];
 
+/* ── Loading constants – khai báo ngoài component để tránh exhaustive-deps warning ── */
+const DURATION = 3000;
+const STEPS = 80;
+const STEP_MS = DURATION / STEPS;
+
 /**
  * Full-page premium loading screen.
  * Features animated soap bubbles, circular progress ring,
@@ -114,10 +119,6 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [messageIndex, setMessageIndex] = useState(0);
   const [isDone, setIsDone] = useState(false);
-
-  const DURATION = 3000;
-  const STEPS = 80;
-  const STEP_MS = DURATION / STEPS;
 
   // Progress animation with ease-out
   useEffect(() => {

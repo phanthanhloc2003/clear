@@ -29,21 +29,23 @@ import ContactSection from "@/components/sections/ContactSection";
  *  - opacity: 0 chỉ ảnh hưởng đến người dùng, không ảnh hưởng Googlebot.
  */
 export default function HomePageClient() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasLoaded, setHasLoaded] = useState(false);
+  // Đọc sessionStorage ngay tại initializer – tránh gọi setState trong effect body
+  // (react-hooks/set-state-in-effect error fix)
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem("cleanpro-loaded");
+  });
+  const [hasLoaded, setHasLoaded] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !!sessionStorage.getItem("cleanpro-loaded");
+  });
 
   useEffect(() => {
-    // Check if already loaded in this session
-    const alreadyLoaded = sessionStorage.getItem("cleanpro-loaded");
-    if (alreadyLoaded) {
-      setIsLoading(false);
-      setHasLoaded(true);
-      return;
+    // Chỉ lock scroll khi cần hiển thị loading screen
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
     }
-
-    // Lock scroll during loading
-    document.body.style.overflow = "hidden";
-  }, []);
+  }, [isLoading]);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);

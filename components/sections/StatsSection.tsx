@@ -127,7 +127,7 @@ export default function StatsSection() {
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-20"
           stagger
         >
-          {STATS.map((stat, i) => (
+          {STATS.map((stat) => (
             <AnimatedItem key={stat.label}>
               <div
                 className="bg-white rounded-3xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -158,7 +158,7 @@ export default function StatsSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           stagger
         >
-          {WHY_US.map((item, i) => (
+          {WHY_US.map((item) => (
             <AnimatedItem key={item.title}>
               <motion.div
                 className="group flex gap-4 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-default"

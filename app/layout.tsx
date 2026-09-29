@@ -35,22 +35,6 @@ export const metadata: Metadata = {
 
   description:
     'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Công nghệ hơi nước hiện đại, sạch sâu 100%. Hotline: 096 9135 304 – Đặt lịch ngay!',
-
-  keywords: [
-    'giặt sofa Đà Nẵng',
-    'giặt nệm Đà Nẵng',
-    'vệ sinh ghế ô tô Đà Nẵng',
-    'giặt sofa tận nơi Đà Nẵng',
-    'giặt nệm tận nơi Đà Nẵng',
-    'dịch vụ vệ sinh Đà Nẵng',
-    'CleanPro VN',
-    'giặt sofa Ngũ Hành Sơn',
-    'vệ sinh ghế văn phòng Đà Nẵng',
-    'giặt sofa tại nhà Đà Nẵng',
-    'giặt nệm Ngũ Hành Sơn',
-    'cleanpro vn đà nẵng',
-  ],
-
   authors: [{ name: 'CleanPro VN', url: 'https://vesinhsachdanang.vn' }],
   creator: 'CleanPro VN',
   publisher: 'CleanPro VN',
