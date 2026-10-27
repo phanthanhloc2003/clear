@@ -74,7 +74,7 @@ export function LocalBusinessSchema() {
           { '@type': 'AdministrativeArea', name: 'Sơn Trà' },
           { '@type': 'AdministrativeArea', name: 'Cẩm Lệ' },
         ],
-        sameAs: ['https://www.facebook.com/cong.hau.916575'],
+        sameAs: ['https://www.facebook.com/share/1JMcMAp7RQ/'],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: 'Dịch Vụ Vệ Sinh CleanPro VN',

@@ -49,7 +49,7 @@ const FOOTER_LINKS = {
 
 /* Sử dụng component SVG thay vì biến từ lucide */
 const SOCIAL_LINKS = [
-  { Icon: FacebookIcon, href: "https://www.facebook.com/cong.hau.916575", label: "Facebook", color: "#1877f2" },
+  { Icon: FacebookIcon, href: "https://www.facebook.com/share/1JMcMAp7RQ/", label: "Facebook", color: "#1877f2" },
   { Icon: InstagramIcon, href: "#", label: "Instagram", color: "#e4405f" },
   { Icon: YoutubeIcon, href: "#", label: "Youtube", color: "#ff0000" },
 ];

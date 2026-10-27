@@ -80,7 +80,7 @@ export default function ServicePageLayout({
           Gọi ngay: 096 9135 304
         </a>
         <a
-          href="https://www.facebook.com/cong.hau.916575"
+          href="https://www.facebook.com/share/1JMcMAp7RQ/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 px-4 py-3 rounded-full border-2 border-teal-500 text-teal-600 font-bold text-sm"
