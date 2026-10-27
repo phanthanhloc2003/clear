@@ -83,11 +83,11 @@ function GiatNemSchema() {
 }
 
 const PRICE_TABLE = [
-  { type: "Nệm đơn (0,9m × 2m)", price: "200.000đ – 250.000đ" },
-  { type: "Nệm đôi (1,2m × 2m)", price: "280.000đ – 330.000đ" },
-  { type: "Nệm đôi lớn (1,6m × 2m)", price: "330.000đ – 380.000đ" },
-  { type: "Nệm king size (1,8m × 2m)", price: "400.000đ – 500.000đ" },
-  { type: "Gối (mỗi cái)", price: "50.000đ – 80.000đ" },
+  { type: "> 1m4", price: "250.000đ" },
+  { type: "1m6", price: "300.000đ" },
+  { type: "1m8", price: "350.000đ" },
+  { type: "2m", price: "400.000đ" },
+  { type: "2m2", price: "450.000đ" },
 ];
 
 const WARNING_SIGNS = [

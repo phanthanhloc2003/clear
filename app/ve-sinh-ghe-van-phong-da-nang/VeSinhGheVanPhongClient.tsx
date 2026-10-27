@@ -42,10 +42,8 @@ function VeSinhGheVanPhongSchema() {
 }
 
 const PRICE_TABLE = [
-  { type: "Ghế lưới văn phòng (mỗi chiếc)", price: "60.000đ – 100.000đ" },
-  { type: "Ghế da văn phòng (mỗi chiếc)", price: "100.000đ – 150.000đ" },
-  { type: "Ghế giám đốc / da cao cấp", price: "150.000đ – 200.000đ" },
-  { type: "Ghế phòng họp (10–20 chiếc)", price: "50.000đ – 80.000đ / ghế" },
+  { type: "Ghế lưới văn phòng (mỗi chiếc)", price: "30.000đ" },
+  { type: "Ghế da văn phòng (mỗi chiếc)", price: "40.000đ" },
   { type: "Hợp đồng dài hạn (>50 ghế)", price: "Liên hệ báo giá riêng" },
 ];
 

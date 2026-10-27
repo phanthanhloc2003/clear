@@ -91,11 +91,14 @@ function GiatSofaSchema() {
 }
 
 const PRICE_TABLE = [
-  { type: "Sofa đơn (1 chỗ)", price: "150.000đ – 200.000đ" },
-  { type: "Sofa đôi (2 chỗ)", price: "200.000đ – 300.000đ" },
-  { type: "Sofa ba (3 chỗ)", price: "280.000đ – 380.000đ" },
-  { type: "Sofa góc L / U", price: "400.000đ – 600.000đ" },
-  { type: "Sofa da (phụ thu)", price: "+50.000đ – 100.000đ" },
+  { type: "> 1m5", price: "250.000đ" },
+  { type: "1m5 - 2m", price: "300.000đ" },
+  { type: "2m - 2m5", price: "350.000đ" },
+  { type: "2m6 - 3m ", price: "400.000đ" },
+  { type: "3m1 - 3m5", price: "450.000đ" },
+  { type: "3m6 - 4m", price: "500.000đ" },
+  { type: "4m1 - 4m5", price: "550.000đ" },
+  { type: "4m5 - 5m", price: "600.000đ" },
 ];
 
 const PROCESS_STEPS = [
