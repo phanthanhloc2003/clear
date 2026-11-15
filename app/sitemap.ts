@@ -45,5 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.85,
     },
+
+    /* ── Trang chính sách ── */
+    {
+      url: `${baseUrl}/chinh-sach-hoan-tien`,
+      lastModified: new Date('2026-11-15'),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
   ]
 }

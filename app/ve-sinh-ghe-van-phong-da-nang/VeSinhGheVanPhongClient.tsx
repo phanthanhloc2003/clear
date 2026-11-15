@@ -6,6 +6,8 @@ import { Phone, CheckCircle, Star, ChevronDown, ArrowRight, Building2 } from "lu
 import ServicePageLayout from "@/components/layout/ServicePageLayout";
 import ServiceHero from "@/components/ui/ServiceHero";
 import AnimatedSection, { AnimatedItem } from "@/components/ui/AnimatedSection";
+import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
+import { gheVanPhongBeforeAfter } from "@/lib/beforeAfterData";
 
 function VeSinhGheVanPhongSchema() {
   const schema = {
@@ -347,6 +349,22 @@ export default function VeSinhGheVanPhongClient() {
               </AnimatedSection>
             </aside>
           </div>
+        </div>
+      </section>
+
+      {/* ── Before & After – Full Width Section ── */}
+      <section
+        id="truoc-sau-ve-sinh-ghe-vp"
+        className="py-14 md:py-20 bg-slate-50"
+        aria-labelledby="ba-vp-heading"
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSection
+            data={gheVanPhongBeforeAfter}
+            headingId="ba-vp-heading"
+            badgeLabel="Kết Quả Thực Tế"
+            embedded={true}
+          />
         </div>
       </section>
     </ServicePageLayout>

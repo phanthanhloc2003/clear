@@ -6,6 +6,8 @@ import { Phone, CheckCircle, Star, ChevronDown, ArrowRight } from "lucide-react"
 import ServicePageLayout from "@/components/layout/ServicePageLayout";
 import ServiceHero from "@/components/ui/ServiceHero";
 import AnimatedSection, { AnimatedItem } from "@/components/ui/AnimatedSection";
+import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
+import { sofaBeforeAfter } from "@/lib/beforeAfterData";
 
 /* ── JSON-LD Schema ── */
 function GiatSofaSchema() {
@@ -433,6 +435,22 @@ export default function GiatSofaClient() {
               </AnimatedSection>
             </aside>
           </div>
+        </div>
+      </section>
+
+      {/* ── Before & After – Full Width Section ── */}
+      <section
+        id="truoc-sau-giat-sofa"
+        className="py-14 md:py-20 bg-slate-50"
+        aria-labelledby="ba-sofa-heading"
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSection
+            data={sofaBeforeAfter}
+            headingId="ba-sofa-heading"
+            badgeLabel="Kết Quả Thực Tế"
+            embedded={true}
+          />
         </div>
       </section>
     </ServicePageLayout>

@@ -15,6 +15,7 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
 import StatsSection from "@/components/sections/StatsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import { homepageGridItems } from "@/lib/beforeAfterData";
 
 /**
  * HomePageClient – Client Component chứa toàn bộ logic animation/loading.
@@ -93,7 +94,15 @@ export default function HomePageClient() {
           <ProcessSection />
 
           {/* 4. Before & After */}
-          <BeforeAfterSection />
+          <BeforeAfterSection
+            mode="grid"
+            gridItems={homepageGridItems}
+            sectionId="results"
+            headingId="results-heading"
+            badgeLabel="Kết Quả Thực Tế"
+            heading="Trước & Sau Khi Vệ Sinh"
+            description="Hình ảnh thực tế từ những dịch vụ CleanPro VN đã thực hiện tại Đà Nẵng."
+          />
 
           {/* 5. Stats & Why Us */}
           <StatsSection />

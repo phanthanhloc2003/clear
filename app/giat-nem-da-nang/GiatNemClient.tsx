@@ -6,6 +6,8 @@ import { Phone, CheckCircle, Star, ChevronDown, ArrowRight, Shield } from "lucid
 import ServicePageLayout from "@/components/layout/ServicePageLayout";
 import ServiceHero from "@/components/ui/ServiceHero";
 import AnimatedSection, { AnimatedItem } from "@/components/ui/AnimatedSection";
+import BeforeAfterSection from "@/components/sections/BeforeAfterSection";
+import { nemBeforeAfter } from "@/lib/beforeAfterData";
 
 /* ── JSON-LD Schema ── */
 function GiatNemSchema() {
@@ -410,6 +412,22 @@ export default function GiatNemClient() {
               </AnimatedSection>
             </aside>
           </div>
+        </div>
+      </section>
+
+      {/* ── Before & After – Full Width Section ── */}
+      <section
+        id="truoc-sau-giat-nem"
+        className="py-14 md:py-20 bg-slate-50"
+        aria-labelledby="ba-nem-heading"
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSection
+            data={nemBeforeAfter}
+            headingId="ba-nem-heading"
+            badgeLabel="Kết Quả Thực Tế"
+            embedded={true}
+          />
         </div>
       </section>
     </ServicePageLayout>

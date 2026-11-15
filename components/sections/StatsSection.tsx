@@ -178,7 +178,7 @@ export default function StatsSection() {
         </AnimatedSection>
 
         {/* Trust logos / certifications */}
-        <AnimatedSection className="mt-16 text-center" variant="fade-up" delay={0.2}>
+        {/* <AnimatedSection className="mt-16 text-center" variant="fade-up" delay={0.2}>
           <p className="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-5">
             Chứng nhận & đối tác
           </p>
@@ -199,7 +199,7 @@ export default function StatsSection() {
               </div>
             ))}
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
       </div>
     </section>
   );

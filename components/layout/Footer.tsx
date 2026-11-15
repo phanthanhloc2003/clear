@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, Heart } from "lucide-react";
+import { Phone, Mail, MapPin, Heart, User } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
 /* ---------- Inline SVG Social Icons (lucide-react does not include brand icons) ---------- */
@@ -39,11 +39,6 @@ const FOOTER_LINKS = {
     { label: "Quy Trình", href: "/#process" },
     { label: "Kết Quả Thực Tế", href: "/#results" },
     { label: "Liên Hệ", href: "/#contact" },
-  ],
-  legal: [
-    { label: "Chính Sách Bảo Mật", href: "#" },
-    { label: "Điều Khoản Dịch Vụ", href: "#" },
-    { label: "Chính Sách Hoàn Tiền", href: "#" },
   ],
 };
 
@@ -143,40 +138,58 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
-              Liên Hệ
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">Hotline</p>
-                  <a href="tel:+84969135304" className="text-sm text-slate-300 hover:text-teal-400 font-semibold transition-colors">
-                    096 9135 304
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">Email</p>
-                  <a href="mailto:conghaupham147@gmail.com" className="text-sm text-slate-300 hover:text-teal-400 transition-colors">
-                    conghaupham147@gmail.com
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-xs text-slate-500 mb-0.5">Địa chỉ</p>
-                  <p className="text-sm text-slate-300">
-                    lô 03 Võ Chí Công<br />Ngũ Hành Sơn , Đà Nẵng
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
+         <div>
+  <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
+    Liên Hệ
+  </h3>
+
+  <ul className="space-y-4">
+    {/* Họ và tên */}
+    <li className="flex items-start gap-3">
+      <User className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+      <div>
+        <p className="text-xs text-slate-500 mb-0.5">Họ và tên</p>
+        <p className="text-sm text-slate-300 font-semibold">
+          Phạm Đoàn Công Hậu
+        </p>
+      </div>
+    </li>
+
+    {/* Hotline */}
+    <li className="flex items-start gap-3">
+      <Phone className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+      <div>
+        <p className="text-xs text-slate-500 mb-0.5">Hotline</p>
+        <a href="tel:+84969135304" className="text-sm text-slate-300 hover:text-teal-400 font-semibold transition-colors">
+          096 9135 304
+        </a>
+      </div>
+    </li>
+
+    {/* Email */}
+    <li className="flex items-start gap-3">
+      <Mail className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+      <div>
+        <p className="text-xs text-slate-500 mb-0.5">Email</p>
+        <a href="mailto:conghaupham147@gmail.com" className="text-sm text-slate-300 hover:text-teal-400 transition-colors">
+          conghaupham147@gmail.com
+        </a>
+      </div>
+    </li>
+
+    {/* Địa chỉ */}
+    <li className="flex items-start gap-3">
+      <MapPin className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
+      <div>
+        <p className="text-xs text-slate-500 mb-0.5">Địa chỉ</p>
+        <p className="text-sm text-slate-300">
+          Lô 03 Võ Chí Công<br />
+          Ngũ Hành Sơn, Đà Nẵng
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
         </div>
 
         {/* Divider */}
@@ -187,19 +200,6 @@ export default function Footer() {
           <p className="text-xs text-slate-500 text-center sm:text-left">
             © {new Date().getFullYear()} CleanPro VN. Tất cả quyền được bảo lưu.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            {FOOTER_LINKS.legal.map((link, i) => (
-              <span key={link.label} className="flex items-center gap-4">
-                <a href={link.href} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-                  {link.label}
-                </a>
-                {i < FOOTER_LINKS.legal.length - 1 && (
-                  <span className="w-px h-3 bg-slate-700" />
-                )}
-              </span>
-            ))}
-          </div>
 
           <p className="text-xs text-slate-500 flex items-center gap-1.5">
             Made with <Heart className="w-3 h-3 text-rose-400 fill-current" /> in Vietnam

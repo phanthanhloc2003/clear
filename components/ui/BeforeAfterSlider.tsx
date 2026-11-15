@@ -1,230 +1,202 @@
 "use client";
 
-import { motion, useMotionValue } from "framer-motion";
-import { useRef, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface BeforeAfterPair {
-  id: string;
-  label: string;
-  beforeLabel?: string;
-  afterLabel?: string;
-  beforeColor: string; // CSS gradient for before
-  afterColor: string;  // CSS gradient for after
-  beforeIcon: string;
-  afterIcon: string;
-  beforeText: string;
-  afterText: string;
-}
-
-interface BeforeAfterSliderProps {
-  pair: BeforeAfterPair;
-}
-
 /**
- * Draggable Before/After comparison slider.
- * Uses Framer Motion useMotionValue for smooth 60fps drag.
- * Since we don't have real images, uses gradient placeholder designs.
+ * BeforeAfterSlider.tsx – Drag slider so sánh Before & After
+ * Hỗ trợ: chuột, cảm ứng, keyboard, Next.js Image, fallback gradient
  */
-export function BeforeAfterSlider({ pair }: BeforeAfterSliderProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef(false); // useRef thay vì useState – không cần re-render
-  const position = useMotionValue(50); // percentage 0-100
-  const [positionState, setPositionState] = useState(50);
 
-  const handleDrag = useCallback(
-    (event: PointerEvent | MouseEvent | TouchEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const clientX =
-        "touches" in event ? event.touches[0].clientX : (event as MouseEvent).clientX;
-      const relX = clientX - rect.left;
-      const pct = Math.max(5, Math.min(95, (relX / rect.width) * 100));
-      position.set(pct);
-      setPositionState(pct);
-    },
-    [position]
-  );
+import { useState, useRef, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import type { BeforeAfterImagePair } from "@/lib/beforeAfterData";
 
-  const startDrag = useCallback(
-    (e: React.PointerEvent) => {
-      e.preventDefault();
-      isDraggingRef.current = true;
-
-      const onMove = (ev: PointerEvent) => handleDrag(ev);
-      const onUp = () => {
-        isDraggingRef.current = false;
-        window.removeEventListener("pointermove", onMove);
-        window.removeEventListener("pointerup", onUp);
-      };
-
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp);
-    },
-    [handleDrag]
-  );
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden select-none cursor-ew-resize shadow-xl"
-      style={{ touchAction: "none" }}
-    >
-      {/* AFTER panel (full width, behind) */}
-      <div
-        className="absolute inset-0 flex flex-col items-center justify-center"
-        style={{ background: pair.afterColor }}
-      >
-        <div className="text-7xl mb-4">{pair.afterIcon}</div>
-        <p className="text-white font-bold text-lg tracking-wide drop-shadow-lg">
-          {pair.afterText}
-        </p>
-        {/* After label tag */}
-        <div className="absolute top-4 right-4 bg-teal-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-          {pair.afterLabel ?? "SAU"}
-        </div>
-      </div>
-
-      {/* BEFORE panel (clip from left by slider position) */}
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${positionState}%` }}
-      >
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center"
-          style={{
-            background: pair.beforeColor,
-            width: `${(100 / positionState) * 100}%`,
-            minWidth: "300px",
-          }}
-        >
-          <div className="text-7xl mb-4">{pair.beforeIcon}</div>
-          <p className="text-white font-bold text-lg tracking-wide drop-shadow-lg">
-            {pair.beforeText}
-          </p>
-          {/* Before label tag */}
-          <div className="absolute top-4 left-4 bg-slate-600/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-            {pair.beforeLabel ?? "TRƯỚC"}
-          </div>
-        </div>
-      </div>
-
-      {/* Divider line */}
-      <div
-        className="absolute inset-y-0 w-0.5 bg-white/80 shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-        style={{ left: `${positionState}%` }}
-      />
-
-      {/* Handle button */}
-      <div
-        className="before-after-handle absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10"
-        style={{ left: `${positionState}%` }}
-        onPointerDown={startDrag}
-      >
-        <div className="flex items-center gap-0.5">
-          <ChevronLeft className="w-4 h-4 text-teal-600" />
-          <ChevronRight className="w-4 h-4 text-teal-600" />
-        </div>
-      </div>
+/* ─── ImageWithFallback ─── */
+interface FallbackImgProps {
+  src: string; alt: string; priority?: boolean;
+  color?: string; icon?: string; text?: string; sizes?: string;
+}
+function FallbackImg({ src, alt, priority, color, icon, text, sizes }: FallbackImgProps) {
+  const [err, setErr] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const bg = color ?? "linear-gradient(135deg,#64748b,#334155)";
+  if (err) return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ background: bg }} aria-hidden="true">
+      {icon && <span className="text-5xl mb-2 drop-shadow">{icon}</span>}
+      {text && <p className="text-white text-sm font-semibold text-center px-3 drop-shadow">{text}</p>}
     </div>
   );
+  return (
+    <>
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center animate-pulse" style={{ background: bg }} aria-hidden="true">
+          {icon && <span className="text-4xl opacity-40">{icon}</span>}
+        </div>
+      )}
+      <Image src={src} alt={alt} fill
+        sizes={sizes ?? "(max-width:640px) 100vw,(max-width:1024px) 50vw,560px"}
+        className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        loading={priority ? "eager" : "lazy"} priority={priority} quality={85}
+        onLoad={() => setLoaded(true)} onError={() => setErr(true)}
+      />
+    </>
+  );
 }
 
-/* ---------- Before/After Section with Tabs ---------- */
+/* ─── BeforeAfterSlider ─── */
+export interface BeforeAfterSliderProps {
+  beforeSrc: string; afterSrc: string;
+  beforeAlt: string; afterAlt: string;
+  beforeColor?: string; afterColor?: string;
+  beforeIcon?: string; afterIcon?: string;
+  beforeText?: string; afterText?: string;
+  title?: string; priority?: boolean; initialPosition?: number;
+}
 
-const PAIRS: BeforeAfterPair[] = [
-  {
-    id: "sofa",
-    label: "Sofa vải",
-    beforeIcon: "🛋️",
-    afterIcon: "✨",
-    beforeText: "Sofa bẩn, ố vàng",
-    afterText: "Sạch bóng, thơm mát",
-    beforeColor:
-      "linear-gradient(135deg, #78716c 0%, #57534e 40%, #44403c 100%)",
-    afterColor:
-      "linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #06b6d4 100%)",
-    beforeLabel: "TRƯỚC",
-    afterLabel: "SAU",
-  },
-  {
-    id: "mattress",
-    label: "Nệm ngủ",
-    beforeIcon: "🛏️",
-    afterIcon: "🌟",
-    beforeText: "Nệm cũ, nhiều bụi bẩn",
-    afterText: "Trắng sạch, khử mùi",
-    beforeColor:
-      "linear-gradient(135deg, #92400e 0%, #78350f 40%, #6b2c05 100%)",
-    afterColor:
-      "linear-gradient(135deg, #047857 0%, #10b981 50%, #34d399 100%)",
-    beforeLabel: "TRƯỚC",
-    afterLabel: "SAU",
-  },
-  {
-    id: "car",
-    label: "Ghế ô tô",
-    beforeIcon: "🚗",
-    afterIcon: "💎",
-    beforeText: "Ghế bẩn, có mùi",
-    afterText: "Sạch sẽ, như mới",
-    beforeColor:
-      "linear-gradient(135deg, #374151 0%, #1f2937 40%, #111827 100%)",
-    afterColor:
-      "linear-gradient(135deg, #0369a1 0%, #0ea5e9 50%, #38bdf8 100%)",
-    beforeLabel: "TRƯỚC",
-    afterLabel: "SAU",
-  },
-  {
-    id: "office",
-    label: "Ghế VP",
-    beforeIcon: "💺",
-    afterIcon: "🏆",
-    beforeText: "Ghế văn phòng cũ",
-    afterText: "Chuyên nghiệp trở lại",
-    beforeColor:
-      "linear-gradient(135deg, #4b5563 0%, #374151 40%, #1f2937 100%)",
-    afterColor:
-      "linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%)",
-    beforeLabel: "TRƯỚC",
-    afterLabel: "SAU",
-  },
-];
+export function BeforeAfterSlider({
+  beforeSrc, afterSrc, beforeAlt, afterAlt,
+  beforeColor, afterColor, beforeIcon, afterIcon, beforeText, afterText,
+  title, priority = false, initialPosition = 50,
+}: BeforeAfterSliderProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState(initialPosition);
+  const dragging = useRef(false);
+  const clamp = (v: number) => Math.max(4, Math.min(96, v));
 
-export function BeforeAfterGallery() {
-  const [activeTab, setActiveTab] = useState(0);
+  const updateFromX = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
+    const r = containerRef.current.getBoundingClientRect();
+    setPos(clamp(((clientX - r.left) / r.width) * 100));
+  }, []);
+
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    e.preventDefault();
+    dragging.current = true;
+    const move = (ev: PointerEvent) => { if (dragging.current) updateFromX(ev.clientX); };
+    const up = () => {
+      dragging.current = false;
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+  }, [updateFromX]);
+
+  const onKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") setPos(p => clamp(p - 5));
+    if (e.key === "ArrowRight") setPos(p => clamp(p + 5));
+  }, []);
+
+  /* Safe width for before clip (avoid division by zero) */
+  const beforeImgWidth = pos > 0 ? `${10000 / pos}%` : "100%";
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
-      {/* Tab buttons */}
-      <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none">
-        {PAIRS.map((pair, i) => (
-          <button
-            key={pair.id}
-            onClick={() => setActiveTab(i)}
-            className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
-              activeTab === i
-                ? "bg-gradient-to-r from-teal-600 to-cyan-500 text-white shadow-md"
-                : "bg-slate-100 text-slate-600 hover:bg-teal-50 hover:text-teal-700"
-            }`}
-          >
-            {pair.label}
-          </button>
-        ))}
+    <figure className="m-0 relative group select-none" aria-label={title ?? `So sánh: ${beforeAlt} / ${afterAlt}`}>
+      <div
+        ref={containerRef}
+        className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize"
+        style={{ touchAction: "none" }}
+        onClick={e => updateFromX(e.clientX)}
+      >
+        {/* AFTER – full width */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <FallbackImg src={afterSrc} alt={afterAlt} priority={priority}
+            color={afterColor} icon={afterIcon} text={afterText} />
+          <div className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full bg-teal-500 text-white text-xs font-bold tracking-widest shadow-lg">
+            AFTER
+          </div>
+        </div>
+
+        {/* BEFORE – clipped */}
+        <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }} aria-hidden="true">
+          <div className="absolute inset-0" style={{ width: beforeImgWidth, maxWidth: "none" }}>
+            <FallbackImg src={beforeSrc} alt={beforeAlt} priority={priority}
+              color={beforeColor} icon={beforeIcon} text={beforeText} />
+          </div>
+          <div className="absolute top-3 left-3 z-10 px-3 py-1 rounded-full bg-slate-800/85 text-white text-xs font-bold tracking-widest shadow-lg backdrop-blur-sm">
+            BEFORE
+          </div>
+        </div>
+
+        {/* Divider line */}
+        <div
+          className="absolute inset-y-0 w-px bg-white z-20 pointer-events-none"
+          style={{ left: `${pos}%`, boxShadow: "0 0 10px rgba(255,255,255,0.9)" }}
+          aria-hidden="true"
+        />
+
+        {/* Drag handle */}
+        <div
+          role="slider"
+          tabIndex={0}
+          aria-label="Kéo để so sánh"
+          aria-valuemin={4} aria-valuemax={96} aria-valuenow={Math.round(pos)}
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-11 h-11 rounded-full bg-teal-500 text-white flex items-center justify-center shadow-xl ring-[3px] ring-white cursor-ew-resize focus:outline-none focus-visible:ring-teal-300 transition-transform group-hover:scale-110 active:scale-95"
+          style={{ left: `${pos}%` }}
+          onPointerDown={onPointerDown}
+          onKeyDown={onKeyDown}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.5 7L4 12l4.5 5V7zm7 0v10L20 12l-4.5-5z" />
+          </svg>
+        </div>
       </div>
 
-      {/* Slider */}
-      <motion.div
-        key={activeTab}
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-      >
-        <BeforeAfterSlider pair={PAIRS[activeTab]} />
-      </motion.div>
+      {title && (
+        <figcaption className="mt-3 text-center text-sm font-semibold text-slate-700">
+          {title}
+        </figcaption>
+      )}
+      <span className="sr-only">Trước: {beforeAlt}. Sau: {afterAlt}</span>
+    </figure>
+  );
+}
 
-      <p className="text-center text-xs text-slate-400 mt-4 italic">
-        ← Kéo thanh giữa để so sánh → Hình ảnh minh họa từ dịch vụ thực tế
+/* ─── BeforeAfterGallery (tab gallery for single-service pages) ─── */
+interface GalleryProps { pairs: BeforeAfterImagePair[]; }
+
+export function BeforeAfterGallery({ pairs }: GalleryProps) {
+  const [tab, setTab] = useState(0);
+  useEffect(() => { setTab(0); }, [pairs]);
+  if (!pairs?.length) return null;
+  const active = Math.min(tab, pairs.length - 1);
+  const p = pairs[active];
+
+  return (
+    <div className="w-full">
+      {pairs.length > 1 && (
+        <div role="tablist" aria-label="Chọn loại" className="flex flex-wrap gap-2 mb-6 justify-center">
+          {pairs.map((pair, i) => (
+            <button key={pair.id} role="tab" aria-selected={active === i}
+              id={`ba-tab-${pair.id}`} aria-controls={`ba-panel-${pair.id}`}
+              onClick={() => setTab(i)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+                active === i
+                  ? "bg-teal-500 text-white shadow-md"
+                  : "bg-white border border-slate-200 text-slate-600 hover:border-teal-300 hover:text-teal-700"
+              }`}>
+              {pair.label}
+            </button>
+          ))}
+        </div>
+      )}
+      <div role="tabpanel" id={`ba-panel-${p.id}`} aria-labelledby={`ba-tab-${p.id}`}>
+        <AnimatePresence mode="wait">
+          <motion.div key={active}
+            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.25 }}>
+            <BeforeAfterSlider
+              beforeSrc={p.beforeSrc} afterSrc={p.afterSrc}
+              beforeAlt={p.beforeAlt} afterAlt={p.afterAlt}
+              beforeColor={p.beforePlaceholderColor} afterColor={p.afterPlaceholderColor}
+              beforeIcon={p.beforeIcon} afterIcon={p.afterIcon}
+              beforeText={p.beforePlaceholderText} afterText={p.afterPlaceholderText}
+              priority={active === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <p className="text-center text-xs text-slate-400 mt-4 italic select-none">
+        ← Kéo thanh giữa để so sánh hoặc dùng phím ← →
       </p>
     </div>
   );
