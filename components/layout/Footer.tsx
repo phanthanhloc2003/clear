@@ -40,6 +40,11 @@ const FOOTER_LINKS = {
     { label: "Kết Quả Thực Tế", href: "/#results" },
     { label: "Liên Hệ", href: "/#contact" },
   ],
+  policies: [
+    { label: "Chính Sách Bảo Mật", href: "/chinh-sach-bao-mat" },
+    { label: "Chính Sách Hoàn Tiền", href: "/chinh-sach-hoan-tien" },
+    { label: "Điều Khoản Dịch Vụ", href: "/dieu-khoan-dich-vu" },
+  ],
 };
 
 /* Sử dụng component SVG thay vì biến từ lucide */
@@ -72,7 +77,7 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
 
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1">
@@ -132,6 +137,25 @@ export default function Footer() {
                   >
                     {link.label}
                   </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-5">
+              Chính Sách
+            </h3>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.policies.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 text-left"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -200,6 +224,20 @@ export default function Footer() {
           <p className="text-xs text-slate-500 text-center sm:text-left">
             © {new Date().getFullYear()} CleanPro VN. Tất cả quyền được bảo lưu.
           </p>
+
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <Link href="/chinh-sach-bao-mat" className="text-xs text-slate-500 hover:text-teal-400 transition-colors">
+              Chính Sách Bảo Mật
+            </Link>
+            <span className="text-slate-700">·</span>
+            <Link href="/chinh-sach-hoan-tien" className="text-xs text-slate-500 hover:text-teal-400 transition-colors">
+              Chính Sách Hoàn Tiền
+            </Link>
+            <span className="text-slate-700">·</span>
+            <Link href="/dieu-khoan-dich-vu" className="text-xs text-slate-500 hover:text-teal-400 transition-colors">
+              Điều Khoản Dịch Vụ
+            </Link>
+          </div>
 
           <p className="text-xs text-slate-500 flex items-center gap-1.5">
             Made with <Heart className="w-3 h-3 text-rose-400 fill-current" /> in Vietnam

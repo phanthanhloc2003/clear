@@ -137,8 +137,8 @@ export default function ChinhSachBaoMatClient() {
               className="flex flex-wrap gap-3 justify-center">
               {[
                 { icon: Lock, text: "Mã hóa SSL 256-bit" },
-                { icon: Clock, text: "Cập nhật: 15/11/2026" },
-                { icon: CheckCircle, text: "Tuân thủ Luật ATTT Việt Nam" },
+                { icon: Clock, text: "Cập nhật: 16/11/2026" },
+                { icon: CheckCircle, text: "Tuân thủ Nghị định 13/2023/NĐ-CP" },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm backdrop-blur-sm">
                   <Icon className="w-4 h-4" />
@@ -409,7 +409,7 @@ export default function ChinhSachBaoMatClient() {
               thay đổi pháp luật hoặc cải tiến dịch vụ. Khi có thay đổi quan trọng, chúng tôi sẽ
               thông báo qua <strong>website</strong>, <strong>email</strong> hoặc <strong>Zalo/Facebook</strong>{" "}
               trước ít nhất <strong>7 ngày</strong>. Phiên bản hiện tại có hiệu lực từ ngày{" "}
-              <strong>15/11/2026</strong>.
+              <strong>16/11/2026</strong>.
             </p>
           </motion.section>
 
@@ -454,8 +454,8 @@ export default function ChinhSachBaoMatClient() {
           {/* Ngày hiệu lực */}
           <div className="pt-6 border-t border-slate-100 text-center">
             <p className="text-xs text-slate-400">
-              Phiên bản 1.0 – Có hiệu lực từ <strong>15/11/2026</strong>. Chính sách áp dụng cho{" "}
-              <strong>CleanPro VN</strong>, 15/03 Võ Chí Công, Ngũ Hành Sơn, Đà Nẵng.
+              Phiên bản 1.1 – Có hiệu lực từ <strong>16/11/2026</strong>. Chính sách áp dụng cho{" "}
+              <strong>CleanPro VN</strong>, Lô 03 Võ Chí Công, Ngũ Hành Sơn, Đà Nẵng.
             </p>
           </div>
 
