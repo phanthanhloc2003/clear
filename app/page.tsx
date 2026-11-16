@@ -21,7 +21,7 @@ import type { Metadata } from "next";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "Giặt Sofa Đà Nẵng – CleanPro VN | Giặt Nệm, Ghế Ô Tô Tận Nơi",
+  title: "Giặt Sofa Đà Nẵng – Vệ Sinh Sạch Đà Nẵng | Giặt Nệm, Ghế Ô Tô Tận Nơi",
   description:
     "Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Công nghệ hơi nước hiện đại, sạch sâu 100%. Hotline: 096 9135 304 – Đặt lịch ngay!",
   alternates: {

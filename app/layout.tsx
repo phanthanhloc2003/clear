@@ -28,16 +28,16 @@ export const metadata: Metadata = {
 
   title: {
     // Trang chủ dùng `default`; các trang con override bằng `title` của page.tsx
-    default: 'Giặt Sofa Đà Nẵng – CleanPro VN | Giặt Nệm, Ghế Ô Tô Tận Nơi',
-    // template áp dụng cho tất cả trang con: title = "[page title] | CleanPro VN"
-    template: '%s | CleanPro VN – Vệ Sinh Đà Nẵng',
+    default: 'Vệ Sinh Sạch Đà Nẵng – Giặt Sofa, Nệm, Ghế Ô Tô Tận Nơi',
+    // template áp dụng cho tất cả trang con
+    template: '%s | Vệ Sinh Sạch Đà Nẵng',
   },
 
   description:
-    'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Công nghệ hơi nước hiện đại, sạch sâu 100%. Hotline: 096 9135 304 – Đặt lịch ngay!',
-  authors: [{ name: 'CleanPro VN', url: 'https://vesinhsachdanang.vn' }],
-  creator: 'CleanPro VN',
-  publisher: 'CleanPro VN',
+    'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Sạch từng góc nhỏ – An tâm từng không gian. Hotline: 096 9135 304 – Đặt lịch ngay!',
+  authors: [{ name: 'Vệ Sinh Sạch Đà Nẵng', url: 'https://vesinhsachdanang.vn' }],
+  creator: 'Vệ Sinh Sạch Đà Nẵng',
+  publisher: 'Vệ Sinh Sạch Đà Nẵng',
 
   /*
    * canonical: ngăn duplicate content www vs non-www.
@@ -48,28 +48,28 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'Giặt Sofa Đà Nẵng – CleanPro VN | Sạch Sâu Tận Nơi',
+    title: 'Vệ Sinh Sạch Đà Nẵng – Giặt Sofa, Nệm, Ghế Ô Tô Tận Nơi',
     description:
-      'Giặt sofa, nệm, ghế ô tô tận nơi tại Đà Nẵng. Công nghệ hiện đại – An toàn – Cam kết sạch sâu 100%.',
+      'Giặt sofa, nệm, ghế ô tô tận nơi tại Đà Nẵng. Sạch từng góc nhỏ – An tâm từng không gian. Cam kết sạch sâu 100%.',
     type: 'website',
     locale: 'vi_VN',
     url: 'https://vesinhsachdanang.vn',
-    siteName: 'CleanPro VN',
+    siteName: 'Vệ Sinh Sạch Đà Nẵng',
     images: [
       {
-        url: '/og-image.jpg', // Cần tạo file public/og-image.jpg (1200×630px)
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'CleanPro VN – Dịch vụ giặt sofa, nệm, ghế ô tô Đà Nẵng',
+        alt: 'Vệ Sinh Sạch Đà Nẵng – Giặt sofa, nệm, ghế ô tô tận nơi',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Giặt Sofa, Nệm, Ghế Ô Tô Tại Đà Nẵng | CleanPro VN',
+    title: 'Vệ Sinh Sạch Đà Nẵng – Giặt Sofa, Nệm, Ghế Ô Tô Tận Nơi',
     description:
-      'Dịch vụ vệ sinh tận nơi tại Đà Nẵng. Sạch sâu 100%. Hotline: 096 9135 304',
+      'Dịch vụ vệ sinh tận nơi tại Đà Nẵng. Sạch từng góc nhỏ – An tâm từng không gian. Hotline: 096 9135 304',
     images: ['/og-image.jpg'],
   },
 

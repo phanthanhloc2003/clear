@@ -33,7 +33,7 @@ function VeSinhGheVanPhongSchema() {
       {
         "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "Vệ sinh ghế văn phòng hàng loạt có giá ưu đãi không?", acceptedAnswer: { "@type": "Answer", text: "Có. CleanPro VN áp dụng mức giá ưu đãi cho đơn hàng từ 10 ghế trở lên. Đơn từ 50 ghế sẽ được giảm thêm 15–20%." } },
+          { "@type": "Question", name: "Vệ sinh ghế văn phòng hàng loạt có giá ưu đãi không?", acceptedAnswer: { "@type": "Answer", text: "Có. Vệ Sinh Sạch Đà Nẵng áp dụng mức giá ưu đãi cho đơn hàng từ 10 ghế trở lên. Đơn từ 50 ghế sẽ được giảm thêm 15–20%." } },
           { "@type": "Question", name: "Vệ sinh ghế văn phòng có gián đoạn hoạt động không?", acceptedAnswer: { "@type": "Answer", text: "Không. Chúng tôi có thể làm ngoài giờ làm việc (tối, cuối tuần) hoặc theo từng khu vực trong văn phòng." } },
           { "@type": "Question", name: "Ghế văn phòng bao lâu cần vệ sinh một lần?", acceptedAnswer: { "@type": "Answer", text: "Với cường độ sử dụng văn phòng cao, nên vệ sinh ghế 6 tháng/lần." } },
         ],
@@ -66,16 +66,16 @@ const PROCESS_STEPS = [
 ];
 
 const REVIEWS = [
-  { name: "Anh Hùng – Giám đốc Công ty XD Hải Châu", rating: 5, text: "Văn phòng 40 nhân viên, 50 ghế lưới. CleanPro làm ngoài giờ cuối tuần, thứ 2 đến mọi người ngạc nhiên vì ghế sạch bóng. Giá rất hợp lý với hợp đồng dài hạn." },
-  { name: "Chị Lan – Trưởng phòng HC Công ty Logistic Sơn Trà", rating: 5, text: "Phòng họp có 30 ghế da bị ố vàng và có mùi. Sau khi CleanPro vệ sinh, ghế sạch và thơm hẳn. Sếp khen phòng họp trông chuyên nghiệp hơn." },
-  { name: "Anh Minh – Chủ chuỗi Cafe Ngũ Hành Sơn", rating: 5, text: "3 cơ sở, mỗi cơ sở khoảng 40 ghế sofa tiếp khách. CleanPro nhận hợp đồng làm theo quý, giá ưu đãi, chất lượng ổn định. Rất hài lòng." },
+  { name: "Anh Hùng – Giám đốc Công ty XD Hải Châu", rating: 5, text: "Văn phòng 40 nhân viên, 50 ghế lưới. Vệ Sinh Sạch Đà Nẵng làm ngoài giờ cuối tuần, thứ 2 đến mọi người ngạc nhiên vì ghế sạch bóng. Giá rất hợp lý với hợp đồng dài hạn." },
+  { name: "Chị Lan – Trưởng phòng HC Công ty Logistic Sơn Trà", rating: 5, text: "Phòng họp có 30 ghế da bị ố vàng và có mùi. Sau khi Vệ Sinh Sạch Đà Nẵng vệ sinh, ghế sạch và thơm hẳn. Sếp khen phòng họp trông chuyên nghiệp hơn." },
+  { name: "Anh Minh – Chủ chuỗi Cafe Ngũ Hành Sơn", rating: 5, text: "3 cơ sở, mỗi cơ sở khoảng 40 ghế sofa tiếp khách. Vệ Sinh Sạch Đà Nẵng nhận hợp đồng làm theo quý, giá ưu đãi, chất lượng ổn định. Rất hài lòng." },
 ];
 
 const FAQ_LIST = [
-  { q: "Vệ sinh ghế văn phòng hàng loạt có giá ưu đãi không?", a: "Có. CleanPro VN áp dụng giảm 10% cho đơn từ 10–49 ghế và giảm 20% cho đơn từ 50 ghế trở lên. Liên hệ 096 9135 304 để nhận báo giá hợp đồng." },
+  { q: "Vệ sinh ghế văn phòng hàng loạt có giá ưu đãi không?", a: "Có. Vệ Sinh Sạch Đà Nẵng áp dụng giảm 10% cho đơn từ 10–49 ghế và giảm 20% cho đơn từ 50 ghế trở lên. Liên hệ 096 9135 304 để nhận báo giá hợp đồng." },
   { q: "Vệ sinh ghế văn phòng có gián đoạn hoạt động không?", a: "Không. Chúng tôi có thể làm ngoài giờ làm việc (tối, cuối tuần) hoặc theo từng khu vực trong văn phòng. Nhân viên vẫn làm việc bình thường." },
   { q: "Ghế văn phòng bao lâu cần vệ sinh một lần?", a: "Với cường độ sử dụng văn phòng cao, nên vệ sinh 6 tháng/lần. Văn phòng nhiều nhân viên hoặc có thực phẩm nên vệ sinh 3–4 tháng/lần." },
-  { q: "CleanPro VN có xuất hoá đơn VAT không?", a: "Có. CleanPro VN xuất hoá đơn VAT đầy đủ theo yêu cầu của doanh nghiệp, hỗ trợ quyết toán thuế và chi phí hoạt động." },
+  { q: "Vệ Sinh Sạch Đà Nẵng có xuất hoá đơn VAT không?", a: "Có. Vệ Sinh Sạch Đà Nẵng xuất hoá đơn VAT đầy đủ theo yêu cầu của doanh nghiệp, hỗ trợ quyết toán thuế và chi phí hoạt động." },
   { q: "Có thể vệ sinh ghế tại coworking space, khách sạn, nhà hàng không?", a: "Có. Chúng tôi nhận vệ sinh ghế cho mọi loại hình doanh nghiệp: văn phòng, khách sạn, nhà hàng, phòng chờ sân bay, bệnh viện, trường học tại Đà Nẵng." },
 ];
 
@@ -105,7 +105,7 @@ export default function VeSinhGheVanPhongClient() {
                   Vệ Sinh Ghế Văn Phòng Chuyên Nghiệp Tại Đà Nẵng
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-5">
-                  <strong>Vệ sinh ghế văn phòng tại Đà Nẵng</strong> tại CleanPro VN là dịch vụ được thiết kế đặc biệt cho các doanh nghiệp, công ty và chuỗi cơ sở kinh doanh. Chúng tôi hiểu rằng môi trường làm việc sạch sẽ không chỉ bảo vệ sức khoẻ nhân viên mà còn tạo ấn tượng chuyên nghiệp với khách hàng và đối tác.
+                  <strong>Vệ sinh ghế văn phòng tại Đà Nẵng</strong> tại Vệ Sinh Sạch Đà Nẵng là dịch vụ được thiết kế đặc biệt cho các doanh nghiệp, công ty và chuỗi cơ sở kinh doanh. Chúng tôi hiểu rằng môi trường làm việc sạch sẽ không chỉ bảo vệ sức khoẻ nhân viên mà còn tạo ấn tượng chuyên nghiệp với khách hàng và đối tác.
                 </p>
                 <p className="text-slate-600 leading-relaxed mb-5">
                   Theo nghiên cứu của Đại học Arizona (Mỹ), mặt bàn làm việc và ghế văn phòng có thể chứa tới <strong>400 lần vi khuẩn nhiều hơn bồn cầu</strong>. Ghế ngồi 8 tiếng/ngày tích tụ mồ hôi, tế bào da chết và vi khuẩn rất nhanh.

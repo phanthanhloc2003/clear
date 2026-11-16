@@ -101,7 +101,7 @@ export default function HomePageClient() {
             headingId="results-heading"
             badgeLabel="Kết Quả Thực Tế"
             heading="Trước & Sau Khi Vệ Sinh"
-            description="Hình ảnh thực tế từ những dịch vụ CleanPro VN đã thực hiện tại Đà Nẵng."
+            description="Hình ảnh thực tế từ những dịch vụ Vệ Sinh Sạch Đà Nẵng đã thực hiện tại Đà Nẵng."
           />
 
           {/* 5. Stats & Why Us */}

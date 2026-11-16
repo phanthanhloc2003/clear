@@ -33,8 +33,8 @@ function VeSinhGheOToSchema() {
       {
         "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "Vệ sinh ghế ô tô tại Đà Nẵng giá bao nhiêu?", acceptedAnswer: { "@type": "Answer", text: "Giá vệ sinh ghế ô tô tại CleanPro VN từ 300.000đ – 800.000đ tùy loại xe và mức độ bẩn." } },
-          { "@type": "Question", name: "Có cần mang xe đến xưởng không?", acceptedAnswer: { "@type": "Answer", text: "Không. CleanPro VN đến tận nơi – tại nhà riêng, chung cư hoặc bãi đỗ xe." } },
+          { "@type": "Question", name: "Vệ sinh ghế ô tô tại Đà Nẵng giá bao nhiêu?", acceptedAnswer: { "@type": "Answer", text: "Giá vệ sinh ghế ô tô tại Vệ Sinh Sạch Đà Nẵng từ 300.000đ – 800.000đ tùy loại xe và mức độ bẩn." } },
+          { "@type": "Question", name: "Có cần mang xe đến xưởng không?", acceptedAnswer: { "@type": "Answer", text: "Không. Vệ Sinh Sạch Đà Nẵng đến tận nơi – tại nhà riêng, chung cư hoặc bãi đỗ xe." } },
           { "@type": "Question", name: "Vệ sinh ghế ô tô mất bao lâu?", acceptedAnswer: { "@type": "Answer", text: "Từ 2–4 giờ tùy số chỗ và mức độ bẩn. Ghế cần thêm 1–2 giờ để khô hoàn toàn." } },
         ],
       },
@@ -78,14 +78,14 @@ const PROCESS_STEPS = [
 ];
 
 const REVIEWS = [
-  { name: "Anh Phúc – Ngũ Hành Sơn", rating: 5, text: "Xe SUV 7 chỗ có 2 bé nhỏ hay để đồ ăn nên rất bẩn. CleanPro làm sạch hoàn toàn, mùi thức ăn và mùi khói lạnh biến mất. Giờ xe như mới!" },
-  { name: "Anh Khoa – Hải Châu", rating: 5, text: "Ghế da của xe đã bị ố vàng và bong tróc nhẹ. Sau khi CleanPro vệ sinh và đánh bóng, màu da phục hồi gần như mới. Giá rất hợp lý." },
+  { name: "Anh Phúc – Ngũ Hành Sơn", rating: 5, text: "Xe SUV 7 chỗ có 2 bé nhỏ hay để đồ ăn nên rất bẩn. Vệ Sinh Sạch Đà Nẵng làm sạch hoàn toàn, mùi thức ăn và mùi khói lạnh biến mất. Giờ xe như mới!" },
+  { name: "Anh Khoa – Hải Châu", rating: 5, text: "Ghế da của xe đã bị ố vàng và bong tróc nhẹ. Sau khi Vệ Sinh Sạch Đà Nẵng vệ sinh và đánh bóng, màu da phục hồi gần như mới. Giá rất hợp lý." },
   { name: "Chị Ngọc – Thanh Khê", rating: 5, text: "Đặt lịch tối hôm trước, sáng hôm sau là có người đến. Làm rất nhanh, chỉ 2.5 tiếng cho xe 7 chỗ. Nhân viên lịch sự, bảo quản xe cẩn thận." },
 ];
 
 const FAQ_LIST = [
   { q: "Vệ sinh ghế ô tô tại Đà Nẵng giá bao nhiêu?", a: "Giá từ 300.000đ – 800.000đ tùy loại xe và mức độ bẩn: xe 4 chỗ từ 300k, xe 7 chỗ từ 450k, xe 16 chỗ từ 600k." },
-  { q: "Có cần mang xe đến xưởng không?", a: "Không. CleanPro VN đến tận nơi – tại nhà riêng, chung cư hoặc bãi đỗ xe. Bạn chỉ cần để xe tại chỗ và chúng tôi xử lý toàn bộ." },
+  { q: "Có cần mang xe đến xưởng không?", a: "Không. Vệ Sinh Sạch Đà Nẵng đến tận nơi – tại nhà riêng, chung cư hoặc bãi đỗ xe. Bạn chỉ cần để xe tại chỗ và chúng tôi xử lý toàn bộ." },
   { q: "Vệ sinh ghế ô tô mất bao lâu?", a: "Từ 2–4 giờ tùy số chỗ và mức độ bẩn. Ghế cần thêm 1–2 giờ để khô hoàn toàn trước khi ngồi." },
   { q: "Có vệ sinh được ghế alcantara / velvet không?", a: "Có, nhưng cần xử lý đặc biệt bằng máy hơi nhẹ và bàn chải mềm. Hãy thông báo loại vật liệu khi đặt lịch để được tư vấn đúng." },
   { q: "Sau bao lâu nên vệ sinh nội thất ô tô một lần?", a: "Nên vệ sinh nội thất ô tô 3–6 tháng/lần. Gia đình có trẻ nhỏ hoặc thú cưng nên làm mỗi 3 tháng." },
@@ -115,7 +115,7 @@ export default function VeSinhGheOToClient() {
                   Vệ Sinh Ghế Ô Tô Tận Nơi Tại Đà Nẵng
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-5">
-                  <strong>Vệ sinh ghế ô tô tại Đà Nẵng</strong> là dịch vụ đang được hàng trăm chủ xe tại Đà Nẵng tin dùng bởi sự tiện lợi và chuyên nghiệp. CleanPro VN mang thiết bị chuyên dụng đến tận nơi đậu xe của bạn.
+                  <strong>Vệ sinh ghế ô tô tại Đà Nẵng</strong> là dịch vụ đang được hàng trăm chủ xe tại Đà Nẵng tin dùng bởi sự tiện lợi và chuyên nghiệp. Vệ Sinh Sạch Đà Nẵng mang thiết bị chuyên dụng đến tận nơi đậu xe của bạn.
                 </p>
                 <p className="text-slate-600 leading-relaxed mb-5">
                   Theo khảo sát, vô-lăng ô tô bẩn hơn bồn cầu tới <strong>9 lần</strong>. Ghế ô tô bẩn không chỉ gây mùi khó chịu mà còn tiềm ẩn nguy cơ gây bệnh cho cả gia đình, nhất là trẻ em.

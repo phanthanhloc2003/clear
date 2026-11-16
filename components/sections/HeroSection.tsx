@@ -135,7 +135,7 @@ export default function HeroSection() {
       id="home"
       ref={containerRef}
       className="relative min-h-screen flex items-center overflow-hidden"
-      aria-label="Hero – CleanPro VN"
+      aria-label="Hero – Vệ Sinh Sạch Đà Nẵng"
     >
       {/* ── Animated background layer ── */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>

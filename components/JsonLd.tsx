@@ -1,5 +1,5 @@
 /**
- * JSON-LD Structured Data – CleanPro VN
+ * JSON-LD Structured Data – Vệ Sinh Sạch Đà Nẵng
  *
  * Bao gồm:
  *  - LocalBusiness + CleaningService (cho Local Pack)
@@ -16,8 +16,8 @@ export function LocalBusinessSchema() {
       {
         '@type': ['LocalBusiness', 'CleaningService'],
         '@id': 'https://vesinhsachdanang.vn/#business',
-        name: 'CleanPro VN – Vệ Sinh Sạch Đà Nẵng',
-        alternateName: 'CleanPro VN',
+        name: 'Vệ Sinh Sạch Đà Nẵng',
+        alternateName: 'vesinhsachdanang.vn',
         url: 'https://vesinhsachdanang.vn',
         telephone: '+84969135304',
         email: 'conghaupham147@gmail.com',
@@ -32,7 +32,7 @@ export function LocalBusinessSchema() {
           url: 'https://vesinhsachdanang.vn/logo.png',
         },
         description:
-          'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô và ghế văn phòng tận nơi tại Đà Nẵng. Công nghệ hơi nước hiện đại, khử khuẩn 99.9%, an toàn cho gia đình.',
+          'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô và ghế văn phòng tận nơi tại Đà Nẵng. Sạch từng góc nhỏ – An tâm từng không gian.',
         priceRange: '₫₫',
         currenciesAccepted: 'VND',
         paymentAccepted: 'Cash, Bank Transfer',
@@ -77,7 +77,7 @@ export function LocalBusinessSchema() {
         sameAs: ['https://www.facebook.com/share/1JMcMAp7RQ/'],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name: 'Dịch Vụ Vệ Sinh CleanPro VN',
+          name: 'Dịch Vụ Vệ Sinh Sạch Đà Nẵng',
           itemListElement: [
             {
               '@type': 'Offer',
@@ -140,7 +140,7 @@ export function LocalBusinessSchema() {
             name: 'Dịch vụ giặt sofa tại Đà Nẵng có đến tận nơi không?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Có. CleanPro VN cung cấp dịch vụ giặt sofa tận nơi tại Đà Nẵng, phủ sóng toàn thành phố. Kỹ thuật viên sẽ mang thiết bị đến nhà bạn, không cần tháo hoặc vận chuyển sofa ra ngoài.',
+              text: 'Có. Vệ Sinh Sạch Đà Nẵng cung cấp dịch vụ giặt sofa tận nơi tại Đà Nẵng, phủ sóng toàn thành phố. Kỹ thuật viên sẽ mang thiết bị đến nhà bạn, không cần tháo hoặc vận chuyển sofa ra ngoài.',
             },
           },
           {
@@ -148,7 +148,7 @@ export function LocalBusinessSchema() {
             name: 'Giặt sofa tại Đà Nẵng giá bao nhiêu?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Giá giặt sofa tại CleanPro VN dao động từ 150.000đ–600.000đ tùy loại (sofa đơn, sofa đôi, sofa góc L). Liên hệ hotline 096 9135 304 để được báo giá miễn phí.',
+              text: 'Giá giặt sofa tại Vệ Sinh Sạch Đà Nẵng dao động từ 150.000đ–600.000đ tùy loại (sofa đơn, sofa đôi, sofa góc L). Liên hệ hotline 096 9135 304 để được báo giá miễn phí.',
             },
           },
           {
@@ -156,7 +156,7 @@ export function LocalBusinessSchema() {
             name: 'Giặt nệm tại nhà bao lâu thì khô?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Sau khi giặt bằng máy hút và sấy hơi nóng chuyên dụng, nệm thường khô hoàn toàn trong 4–6 tiếng nếu thời tiết tốt. CleanPro VN sử dụng công nghệ sấy nhiệt giúp rút ngắn thời gian khô đáng kể.',
+              text: 'Sau khi giặt bằng máy hút và sấy hơi nóng chuyên dụng, nệm thường khô hoàn toàn trong 4–6 tiếng nếu thời tiết tốt. Vệ Sinh Sạch Đà Nẵng sử dụng công nghệ sấy nhiệt giúp rút ngắn thời gian khô đáng kể.',
             },
           },
           {
@@ -164,15 +164,15 @@ export function LocalBusinessSchema() {
             name: 'Vệ sinh ghế ô tô tại Đà Nẵng có phải mang xe đến không?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Không. CleanPro VN cung cấp dịch vụ vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Bạn chỉ cần để xe tại nhà, chúng tôi sẽ mang thiết bị đến làm sạch nội thất ngay tại chỗ đậu xe của bạn.',
+              text: 'Không. Vệ Sinh Sạch Đà Nẵng cung cấp dịch vụ vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Bạn chỉ cần để xe tại nhà, chúng tôi sẽ mang thiết bị đến làm sạch nội thất ngay tại chỗ đậu xe của bạn.',
             },
           },
           {
             '@type': 'Question',
-            name: 'CleanPro VN phục vụ những khu vực nào tại Đà Nẵng?',
+            name: 'Vệ Sinh Sạch Đà Nẵng phục vụ những khu vực nào tại Đà Nẵng?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'CleanPro VN phục vụ toàn bộ TP Đà Nẵng bao gồm: Ngũ Hành Sơn, Hải Châu, Thanh Khê, Liên Chiểu, Sơn Trà, Cẩm Lệ, Hòa Vang và khu vực lân cận. Gọi 096 9135 304 để xác nhận khu vực của bạn.',
+              text: 'Vệ Sinh Sạch Đà Nẵng phục vụ toàn bộ TP Đà Nẵng bao gồm: Ngũ Hành Sơn, Hải Châu, Thanh Khê, Liên Chiểu, Sơn Trà, Cẩm Lệ, Hòa Vang và khu vực lân cận. Gọi 096 9135 304 để xác nhận khu vực của bạn.',
             },
           },
         ],
@@ -183,9 +183,9 @@ export function LocalBusinessSchema() {
         '@type': 'WebSite',
         '@id': 'https://vesinhsachdanang.vn/#website',
         url: 'https://vesinhsachdanang.vn',
-        name: 'CleanPro VN – Vệ Sinh Sạch Đà Nẵng',
+        name: 'Vệ Sinh Sạch Đà Nẵng',
         description:
-          'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng',
+          'Dịch vụ giặt sofa, giặt nệm, vệ sinh ghế ô tô tận nơi tại Đà Nẵng. Sạch từng góc nhỏ – An tâm từng không gian',
         publisher: {
           '@id': 'https://vesinhsachdanang.vn/#business',
         },

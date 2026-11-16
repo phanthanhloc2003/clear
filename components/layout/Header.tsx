@@ -117,7 +117,7 @@ export default function Header() {
             <Link
               href="/"
               className="cursor-pointer hover:opacity-85 transition-opacity duration-200"
-              aria-label="CleanPro VN - Trang chủ"
+              aria-label="Vệ Sinh Sạch Đà Nẵng - Trang chủ"
             >
               <Logo
                 variant="full"

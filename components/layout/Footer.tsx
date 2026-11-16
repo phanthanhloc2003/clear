@@ -85,8 +85,7 @@ export default function Footer() {
               <Logo variant="full" theme="light" height={38} />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
-              Chuyên gia vệ sinh chuyên nghiệp – Mang lại không gian sạch sâu,
-              tươi mới cho mọi gia đình và doanh nghiệp.
+              Sạch từng góc nhỏ – An tâm từng không gian
             </p>
 
             {/* Social links */}
@@ -222,7 +221,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 text-center sm:text-left">
-            © {new Date().getFullYear()} CleanPro VN. Tất cả quyền được bảo lưu.
+            © {new Date().getFullYear()} Vệ Sinh Sạch Đà Nẵng. Tất cả quyền được bảo lưu.
           </p>
 
           <div className="flex items-center gap-4 flex-wrap justify-center">

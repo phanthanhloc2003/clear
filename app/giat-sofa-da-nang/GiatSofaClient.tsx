@@ -45,7 +45,7 @@ function GiatSofaSchema() {
             name: "Giặt sofa Đà Nẵng giá bao nhiêu tiền?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Giá giặt sofa tại CleanPro VN dao động từ 150.000đ – 600.000đ tùy loại: sofa đơn từ 150k, sofa đôi từ 250k, sofa góc L từ 400k. Liên hệ 096 9135 304 để được báo giá miễn phí.",
+              text: "Giá giặt sofa tại Vệ Sinh Sạch Đà Nẵng dao động từ 150.000đ – 600.000đ tùy loại: sofa đơn từ 150k, sofa đôi từ 250k, sofa góc L từ 400k. Liên hệ 096 9135 304 để được báo giá miễn phí.",
             },
           },
           {
@@ -53,12 +53,12 @@ function GiatSofaSchema() {
             name: "Giặt sofa tại nhà có mất nhiều thời gian không?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Thời gian giặt sofa thường từ 60–120 phút tùy kích thước. Sofa khô nhanh sau 3–4 giờ nhờ công nghệ sấy nhiệt chuyên dụng của CleanPro VN.",
+              text: "Thời gian giặt sofa thường từ 60–120 phút tùy kích thước. Sofa khô nhanh sau 3–4 giờ nhờ công nghệ sấy nhiệt chuyên dụng của Vệ Sinh Sạch Đà Nẵng.",
             },
           },
           {
             "@type": "Question",
-            name: "CleanPro VN có giặt sofa da không?",
+            name: "Vệ Sinh Sạch Đà Nẵng có giặt sofa da không?",
             acceptedAnswer: {
               "@type": "Answer",
               text: "Có. Chúng tôi giặt và phục hồi sofa da bằng dung dịch chuyên dụng an toàn, không làm bong tróc hay mất màu da. Sau khi giặt, da được dưỡng ẩm, phục hồi độ bóng tự nhiên.",
@@ -69,7 +69,7 @@ function GiatSofaSchema() {
             name: "Dịch vụ có đến tận nơi không?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Có. CleanPro VN phục vụ tận nhà toàn TP Đà Nẵng. Bạn không cần tháo hay vận chuyển sofa, kỹ thuật viên sẽ mang thiết bị đến làm sạch ngay tại chỗ.",
+              text: "Có. Vệ Sinh Sạch Đà Nẵng phục vụ tận nhà toàn TP Đà Nẵng. Bạn không cần tháo hay vận chuyển sofa, kỹ thuật viên sẽ mang thiết bị đến làm sạch ngay tại chỗ.",
             },
           },
           {
@@ -122,7 +122,7 @@ const REVIEWS = [
   {
     name: "Chị Hương – Ngũ Hành Sơn",
     rating: 5,
-    text: "Sofa nhà mình bị mèo cào và có mùi hôi lâu ngày, sau khi CleanPro giặt thì như mới luôn! Kỹ thuật viên làm rất cẩn thận, không để lại dấu ướt gì cả.",
+    text: "Sofa nhà mình bị mèo cào và có mùi hôi lâu ngày, sau khi Vệ Sinh Sạch Đà Nẵng giặt thì như mới luôn! Kỹ thuật viên làm rất cẩn thận, không để lại dấu ướt gì cả.",
   },
   {
     name: "Anh Tuấn – Hải Châu",
@@ -139,19 +139,19 @@ const REVIEWS = [
 const FAQ_LIST = [
   {
     q: "Giặt sofa Đà Nẵng giá bao nhiêu tiền?",
-    a: "Giá giặt sofa tại CleanPro VN dao động từ 150.000đ – 600.000đ tùy loại: sofa đơn từ 150k, sofa đôi từ 250k, sofa góc L từ 400k. Liên hệ 096 9135 304 để được báo giá miễn phí.",
+    a: "Giá giặt sofa tại Vệ Sinh Sạch Đà Nẵng dao động từ 150.000đ – 600.000đ tùy loại: sofa đơn từ 150k, sofa đôi từ 250k, sofa góc L từ 400k. Liên hệ 096 9135 304 để được báo giá miễn phí.",
   },
   {
     q: "Giặt sofa tại nhà có mất nhiều thời gian không?",
     a: "Thời gian giặt sofa thường từ 60–120 phút tùy kích thước. Sofa khô nhanh sau 3–4 giờ nhờ công nghệ sấy nhiệt. Bạn có thể sử dụng sofa ngay trong ngày.",
   },
   {
-    q: "CleanPro VN có giặt sofa da không?",
+    q: "Vệ Sinh Sạch Đà Nẵng có giặt sofa da không?",
     a: "Có. Chúng tôi giặt và phục hồi sofa da bằng dung dịch chuyên dụng an toàn, không làm bong tróc hay mất màu. Sau giặt, da được dưỡng ẩm, phục hồi độ bóng.",
   },
   {
     q: "Dịch vụ có đến tận nơi không?",
-    a: "Có. CleanPro VN phục vụ tận nhà toàn TP Đà Nẵng. Bạn không cần tháo hay vận chuyển sofa.",
+    a: "Có. Vệ Sinh Sạch Đà Nẵng phục vụ tận nhà toàn TP Đà Nẵng. Bạn không cần tháo hay vận chuyển sofa.",
   },
   {
     q: "Giặt sofa vải bố có bị nhăn không?",
@@ -182,10 +182,10 @@ export default function GiatSofaClient() {
 
               <AnimatedSection variant="fade-up">
                 <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-                  Dịch Vụ Giặt Sofa Tại Đà Nẵng – CleanPro VN
+                  Dịch Vụ Giặt Sofa Tại Đà Nẵng – Vệ Sinh Sạch Đà Nẵng
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-5">
-                  <strong>Giặt sofa Đà Nẵng</strong> tại CleanPro VN là dịch vụ vệ sinh sofa chuyên nghiệp
+                  <strong>Giặt sofa Đà Nẵng</strong> tại Vệ Sinh Sạch Đà Nẵng là dịch vụ vệ sinh sofa chuyên nghiệp
                   hàng đầu tại Đà Nẵng, phục vụ toàn bộ các quận Ngũ Hành Sơn, Hải Châu, Thanh Khê,
                   Liên Chiểu, Sơn Trà, Cẩm Lệ. Chúng tôi mang thiết bị và hoá chất chuyên dụng
                   đến tận nhà bạn, giúp sofa sạch sâu từng thớ vải mà không cần vận chuyển.
@@ -276,7 +276,7 @@ export default function GiatSofaClient() {
               <AnimatedSection variant="fade-up">
                 <h3 className="text-2xl font-bold text-slate-900 mt-10 mb-4">Khu Vực Phục Vụ Giặt Sofa Tại Đà Nẵng</h3>
                 <p className="text-slate-600 leading-relaxed mb-4">
-                  CleanPro VN cung cấp dịch vụ <strong>giặt sofa tại nhà Đà Nẵng</strong> toàn thành phố, bao gồm các quận:
+                  Vệ Sinh Sạch Đà Nẵng cung cấp dịch vụ <strong>giặt sofa tại nhà Đà Nẵng</strong> toàn thành phố, bao gồm các quận:
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
                   {["Ngũ Hành Sơn", "Hải Châu", "Thanh Khê", "Liên Chiểu", "Sơn Trà", "Cẩm Lệ", "Hòa Vang"].map((q) => (

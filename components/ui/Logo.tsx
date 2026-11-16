@@ -1,5 +1,5 @@
 /**
- * CleanPro VN – Brand Logo Component
+ * Vệ Sinh Sạch Đà Nẵng – Brand Logo Component
  *
  * Renders the full logo (icon + wordmark) or icon-only variant.
  * Uses pure SVG — no external dependencies, renders perfectly at any size.
@@ -22,8 +22,12 @@ export default function Logo({
   className = "",
 }: LogoProps) {
   const iconSize = height;
-  const textColor = theme === "light" ? "#ffffff" : "#0f172a";
-  const subColor  = theme === "light" ? "rgba(255,255,255,0.65)" : "#0d9488";
+  // Dòng 1 "VỆ SINH SẠCH": đen khi dark, trắng khi light
+  const line1Color = theme === "light" ? "#ffffff" : "#0f172a";
+  // Dòng 2 "ĐÀ NẴNG": xanh teal đậm khi dark, trắng mờ khi light
+  const line2Color = theme === "light" ? "rgba(255,255,255,0.90)" : "#166534";
+  // Tagline màu xám
+  const taglineColor = theme === "light" ? "rgba(255,255,255,0.65)" : "#6b7280";
 
   if (variant === "icon") {
     return (
@@ -34,10 +38,10 @@ export default function Logo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        aria-label="CleanPro VN Logo"
+        aria-label="Vệ Sinh Sạch Đà Nẵng Logo"
         role="img"
       >
-        <LogoIcon />
+        <LogoIcon id="icon-only" />
       </svg>
     );
   }
@@ -45,8 +49,8 @@ export default function Logo({
   return (
     <div
       className={`inline-flex items-center gap-2.5 ${className}`}
-      style={{ height }}
-      aria-label="CleanPro VN"
+      style={{ height: variant === "full" && height >= 50 ? "auto" : height }}
+      aria-label="Vệ Sinh Sạch Đà Nẵng"
       role="img"
     >
       {/* Icon */}
@@ -59,102 +63,137 @@ export default function Logo({
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        <LogoIcon />
+        <LogoIcon id="full-logo" />
       </svg>
 
       {/* Wordmark */}
       <div style={{ lineHeight: 1, userSelect: "none" }}>
+        {/* Dòng 1: VỆ SINH SẠCH */}
         <div
           style={{
-            fontSize: height * 0.45,
+            fontSize: height * 0.42,
             fontWeight: 800,
-            color: textColor,
-            letterSpacing: "-0.03em",
+            color: line1Color,
+            letterSpacing: "0.01em",
             fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
-            lineHeight: 1,
+            lineHeight: 1.1,
+            textTransform: "uppercase",
           }}
         >
-          CleanPro
-          <span style={{ color: "#14b8a6", marginLeft: 1 }}>VN</span>
+          Vệ Sinh Sạch
         </div>
+        {/* Dòng 2: ĐÀ NẴNG */}
         <div
           style={{
-            fontSize: height * 0.22,
-            fontWeight: 600,
-            color: subColor,
-            letterSpacing: "0.18em",
+            fontSize: height * 0.42,
+            fontWeight: 800,
+            color: line2Color,
+            letterSpacing: "0.01em",
+            fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+            lineHeight: 1.1,
             textTransform: "uppercase",
-            marginTop: height * 0.06,
-            fontFamily: "'Inter', system-ui, sans-serif",
-            lineHeight: 1,
           }}
         >
-          Premium Cleaning
+          Đà Nẵng
         </div>
+        {/* Tagline – chỉ hiển thị khi height >= 50 */}
+        {height >= 50 && (
+          <div
+            style={{
+              fontSize: height * 0.17,
+              fontWeight: 400,
+              color: taglineColor,
+              letterSpacing: "0.01em",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+              lineHeight: 1.3,
+              marginTop: height * 0.06,
+              whiteSpace: "nowrap",
+            }}
+          >
+            Sạch từng góc nhỏ – An tâm từng không gian
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 /**
- * The icon mark – a water droplet with a sofa silhouette inside,
- * rendered on a teal gradient rounded square.
+ * Icon mark – rounded teal square with 4-pointed sparkle star + small dot
+ * matching the brand image.
  */
-function LogoIcon() {
+function LogoIcon({ id }: { id: string }) {
+  const bgId   = `bgGrad-${id}`;
+  const glowId = `glow-${id}`;
   return (
     <>
-      {/* Gradient defs */}
       <defs>
-        <linearGradient id="bgGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+        <linearGradient id={bgId} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
           <stop offset="0%"   stopColor="#0d9488" />
-          <stop offset="55%"  stopColor="#14b8a6" />
-          <stop offset="100%" stopColor="#06b6d4" />
+          <stop offset="60%"  stopColor="#14b8a6" />
+          <stop offset="100%" stopColor="#0f9d8c" />
         </linearGradient>
-        <linearGradient id="dropGrad" x1="0" y1="0" x2="14" y2="20" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#ffffff" stopOpacity="1" />
-          <stop offset="100%" stopColor="#ccfbf1" stopOpacity="0.92" />
-        </linearGradient>
-        <linearGradient id="goldGrad" x1="0" y1="0" x2="6" y2="12" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#fcd34d" />
-          <stop offset="100%" stopColor="#f59e0b" />
-        </linearGradient>
-        <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="1" stdDeviation="1.5" floodColor="rgba(0,0,0,0.2)" />
+        <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="rgba(0,0,0,0.18)" />
         </filter>
       </defs>
 
       {/* Background rounded square */}
-      <rect width="40" height="40" rx="10" fill="url(#bgGrad)" />
+      <rect width="40" height="40" rx="9" fill={`url(#${bgId})`} />
 
-      {/* Inner highlight overlay */}
-      <rect width="40" height="20" rx="10" fill="white" fillOpacity="0.08" />
+      {/* Subtle inner highlight */}
+      <rect width="40" height="22" rx="9" fill="white" fillOpacity="0.07" />
 
-      {/* Water droplet */}
-      <g filter="url(#dropShadow)" transform="translate(8, 5)">
-        {/* Main drop shape */}
+      {/* 4-pointed sparkle star – centred at (19, 21) */}
+      <g filter={`url(#${glowId})`}>
+        {/* Top/bottom cánh dài – path hình thoi mảnh (vertical) */}
         <path
-          d="M12 1 C12 1 4.5 10 4.5 16.5 C4.5 20.64 7.92 24 12 24 C16.08 24 19.5 20.64 19.5 16.5 C19.5 10 12 1 12 1Z"
-          fill="url(#dropGrad)"
+          d="M19 10 C19 10 17.5 18 17.5 21 C17.5 24 19 32 19 32 C19 32 20.5 24 20.5 21 C20.5 18 19 10 19 10Z"
+          fill="white"
+          fillOpacity="0.95"
         />
-        {/* Gold shimmer reflection inside drop */}
+        {/* Left/right cánh dài – path hình thoi mảnh (horizontal) */}
         <path
-          d="M9.5 13 C9.5 13 7.5 15.5 7.5 17.5 C7.5 19.2 8.5 20.5 10 21.5"
-          stroke="url(#goldGrad)"
-          strokeWidth="1.5"
+          d="M8 21 C8 21 16 19.5 19 19.5 C22 19.5 30 21 30 21 C30 21 22 22.5 19 22.5 C16 22.5 8 21 8 21Z"
+          fill="white"
+          fillOpacity="0.95"
+        />
+        {/* Diagonal NE – cánh ngắn chéo */}
+        <path
+          d="M19 21 L27.5 12.5"
+          stroke="white"
+          strokeWidth="2.2"
           strokeLinecap="round"
-          strokeOpacity="0.9"
+          strokeOpacity="0.6"
         />
-        {/* Highlight dot */}
-        <circle cx="9" cy="10" r="1.8" fill="white" fillOpacity="0.55" />
+        {/* Diagonal SW – cánh ngắn chéo */}
+        <path
+          d="M19 21 L10.5 29.5"
+          stroke="white"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+        />
+        {/* Diagonal NW – cánh ngắn chéo */}
+        <path
+          d="M19 21 L10.5 12.5"
+          stroke="white"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+        />
+        {/* Diagonal SE – cánh ngắn chéo */}
+        <path
+          d="M19 21 L27.5 29.5"
+          stroke="white"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeOpacity="0.6"
+        />
       </g>
 
-      {/* Sparkle dots top-right */}
-      <circle cx="31" cy="8"  r="2"   fill="white" fillOpacity="0.55" />
-      <circle cx="34" cy="13" r="1.2" fill="white" fillOpacity="0.35" />
-      <circle cx="28" cy="6"  r="1.2" fill="#fcd34d" fillOpacity="0.7" />
-
-      {/* Bottom border shimmer */}
-      <rect x="6" y="36" width="28" height="1.5" rx="0.75" fill="white" fillOpacity="0.20" />
+      {/* Small dot – top right corner (like the reference image) */}
+      <circle cx="30" cy="10" r="2.8" fill="white" fillOpacity="0.90" />
     </>
   );
 }

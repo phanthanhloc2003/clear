@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     // Gửi email qua Resend
     const { data: emailData, error } = await resend.emails.send({
-      from: "CleanPro VN <onboarding@resend.dev>", // Thay bằng domain của bạn sau khi verify
+      from: "Vệ Sinh Sạch Đà Nẵng <onboarding@resend.dev>", // Thay bằng domain của bạn sau khi verify
       to: ["conghaupham147@gmail.com"],
       subject: `🧹 [Đặt lịch mới] ${data.name} – ${getServiceLabel(data.service)}`,
       html,

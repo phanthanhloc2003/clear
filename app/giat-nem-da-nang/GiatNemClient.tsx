@@ -45,7 +45,7 @@ function GiatNemSchema() {
             name: "Giặt nệm tại Đà Nẵng giá bao nhiêu?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Giá giặt nệm tại CleanPro VN từ 200.000đ – 500.000đ tùy kích thước: nệm đơn từ 200k, nệm đôi từ 300k, nệm king size từ 450k. Báo giá miễn phí qua 096 9135 304.",
+              text: "Giá giặt nệm tại Vệ Sinh Sạch Đà Nẵng từ 200.000đ – 500.000đ tùy kích thước: nệm đơn từ 200k, nệm đôi từ 300k, nệm king size từ 450k. Báo giá miễn phí qua 096 9135 304.",
             },
           },
           {
@@ -53,7 +53,7 @@ function GiatNemSchema() {
             name: "Giặt nệm tại nhà bao lâu thì khô?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Sau khi giặt, nệm thường khô hoàn toàn trong 4–6 tiếng nếu thời tiết tốt. CleanPro VN sử dụng máy sấy nhiệt chuyên dụng giúp rút ngắn thời gian khô đáng kể.",
+              text: "Sau khi giặt, nệm thường khô hoàn toàn trong 4–6 tiếng nếu thời tiết tốt. Vệ Sinh Sạch Đà Nẵng sử dụng máy sấy nhiệt chuyên dụng giúp rút ngắn thời gian khô đáng kể.",
             },
           },
           {
@@ -113,12 +113,12 @@ const REVIEWS = [
   {
     name: "Chị Minh – Cẩm Lệ",
     rating: 5,
-    text: "Con mình hay bị dị ứng mà không biết tại sao, sau khi giặt nệm tại CleanPro VN thì hết hẳn. Kỹ thuật viên làm rất nhanh và sạch, nệm thơm như mới.",
+    text: "Con mình hay bị dị ứng mà không biết tại sao, sau khi giặt nệm tại Vệ Sinh Sạch Đà Nẵng thì hết hẳn. Kỹ thuật viên làm rất nhanh và sạch, nệm thơm như mới.",
   },
   {
     name: "Anh Dũng – Sơn Trà",
     rating: 5,
-    text: "Nhà có 3 cái nệm, gọi CleanPro ra giặt hết chỉ tốn hơn 900k. So với chất lượng thì rất xứng đáng. Đặc biệt mùi hôi của thú cưng đã biến mất hoàn toàn.",
+    text: "Nhà có 3 cái nệm, gọi Vệ Sinh Sạch Đà Nẵng ra giặt hết chỉ tốn hơn 900k. So với chất lượng thì rất xứng đáng. Đặc biệt mùi hôi của thú cưng đã biến mất hoàn toàn.",
   },
   {
     name: "Chị Thu – Liên Chiểu",
@@ -130,11 +130,11 @@ const REVIEWS = [
 const FAQ_LIST = [
   {
     q: "Giặt nệm tại Đà Nẵng giá bao nhiêu?",
-    a: "Giá giặt nệm tại CleanPro VN từ 200.000đ – 500.000đ tùy kích thước: nệm đơn từ 200k, nệm đôi từ 300k, nệm king size từ 450k. Báo giá miễn phí qua 096 9135 304.",
+    a: "Giá giặt nệm tại Vệ Sinh Sạch Đà Nẵng từ 200.000đ – 500.000đ tùy kích thước: nệm đơn từ 200k, nệm đôi từ 300k, nệm king size từ 450k. Báo giá miễn phí qua 096 9135 304.",
   },
   {
     q: "Giặt nệm tại nhà bao lâu thì khô?",
-    a: "Sau khi giặt, nệm thường khô hoàn toàn trong 4–6 tiếng. CleanPro VN sử dụng máy sấy nhiệt chuyên dụng giúp rút ngắn thời gian. Nếu đặt lịch buổi sáng, bạn có thể dùng nệm tối hôm đó.",
+    a: "Sau khi giặt, nệm thường khô hoàn toàn trong 4–6 tiếng. Vệ Sinh Sạch Đà Nẵng sử dụng máy sấy nhiệt chuyên dụng giúp rút ngắn thời gian. Nếu đặt lịch buổi sáng, bạn có thể dùng nệm tối hôm đó.",
   },
   {
     q: "Mạt giường có thể bị tiêu diệt hoàn toàn không?",
@@ -178,7 +178,7 @@ export default function GiatNemClient() {
                   Dịch Vụ Giặt Nệm Tận Nơi Tại Đà Nẵng
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-5">
-                  <strong>Giặt nệm Đà Nẵng</strong> tại CleanPro VN là giải pháp vệ sinh nệm
+                  <strong>Giặt nệm Đà Nẵng</strong> tại Vệ Sinh Sạch Đà Nẵng là giải pháp vệ sinh nệm
                   chuyên nghiệp, an toàn và tiện lợi nhất cho các gia đình tại Đà Nẵng.
                   Chúng tôi sử dụng công nghệ phun hơi nước nóng kết hợp máy hút chuyên dụng
                   để làm sạch sâu bề mặt nệm mà không làm ướt phần lõi bên trong.
